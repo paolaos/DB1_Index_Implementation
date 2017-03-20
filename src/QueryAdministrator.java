@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Paola Ortega S on 3/16/2017.
  */
-public class QueryAdministrator<T> {
+public class QueryAdministrator<T>{
     private Hashtable<Integer, String> data;
     private Hashtable<Integer, Index> indexes;
     private UI ui;
@@ -35,15 +35,15 @@ public class QueryAdministrator<T> {
         return true;
     }
 
-    public List<Integer> simpleRangeQueryExecutor(T lowestRange, T highestRange, int category){
+    public List<Integer> simpleRangeQueryExecutor(Query query){
         return null;
     }
 
-    public List<Integer> simpleInequalityQueryExecutor(int inequalitySymbol, T range, int category){
+    public List<Integer> simpleInequalityQueryExecutor(Query query){
         return null;
     }
 
-    public List<Integer> complexQueryExecutor(List<Integer> simpleQuery1, List<Integer> simpleQuery2, boolean isDisjunctive){
+    public List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive){
         return null;
     }
 
@@ -56,5 +56,7 @@ public class QueryAdministrator<T> {
     }
 
 
-
+    public  Class validateField() {
+        return "".getClass();
+    }
 }
