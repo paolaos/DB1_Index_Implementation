@@ -10,7 +10,7 @@ public class UI {
     private Scanner reader;
     private boolean exit = false;
     public UI(){
-         reader = new Scanner(System.in);
+        reader = new Scanner(System.in);
         System.out.println("Type complete file path to the .csv archive");
         String filePath = reader.next();
         File file = new File(filePath);
@@ -21,7 +21,7 @@ public class UI {
         }
         queryAdministrator = new QueryAdministrator(file);
 
-        System.out.println("Please type 1 if you want a simple query, and a 2 if you want a complex query. ");
+        System.out.println("Please type 1 if you want a simple query or 2 if you want a complex query. ");
         int query = reader.nextInt();
         String queryResult;
         if(query == 1){
@@ -29,7 +29,8 @@ public class UI {
              queryResult = simpleQuery();
         }
         else{
-             queryResult = complexQuery();
+            System.out.println("Complex Query");
+            queryResult = complexQuery();
         }
         System.out.println(queryResult);
 
@@ -57,13 +58,13 @@ public class UI {
     }
 
     private Query queryInput(){
-        System.out.println("Type 1 if you want to ask for a specific value of a field or 2 if you want to ask for a range of values.");
+        System.out.println("Type 1 if you're searching for a specific value of a field or 2 if you want to ask for a range of values.");
         int typeInput = reader.nextInt();
         if(typeInput == 1){
             System.out.println("Type the field you want to ask for: ");
             String field = reader.next();
             //TODO: validar que existe y devolver tipo
-            Class clase = queryAdministrator.validateField();
+            Class clase = null; //queryAdministrator.validateField(field);
             switch (clase.getName()){
                 case "String":
                     break;
