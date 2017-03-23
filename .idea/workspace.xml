@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4c38a3f0-086a-4a91-950e-d57e8e5bf31e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QueryAdministrator.java" afterPath="$PROJECT_DIR$/src/QueryAdministrator.java" />
     </list>
     <ignored path="TP1_Bases1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="QueryAdministrator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/QueryAdministrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+            <state relative-caret-position="490">
+              <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -692,7 +691,7 @@
       <updated>1489973137830</updated>
       <workItem from="1489981651198" duration="8353000" />
       <workItem from="1490246529230" duration="35000" />
-      <workItem from="1490246716116" duration="586000" />
+      <workItem from="1490246716116" duration="657000" />
     </task>
     <task id="LOCAL-00001" summary="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's">
       <created>1489991384516</created>
@@ -715,11 +714,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489991582874</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cambios a nombres de campos y un metodo de QueryAdministrator">
+      <created>1490247345655</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1490247345655</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8974000" />
+    <option name="totallyTimeSpent" value="9045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="3725" height="2188" extended-state="6" />
@@ -772,7 +778,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's" />
+    <MESSAGE value="Cambios a nombres de campos y un metodo de QueryAdministrator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios a nombres de campos y un metodo de QueryAdministrator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -879,8 +886,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/QueryAdministrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        <state relative-caret-position="490">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding />
         </state>
       </provider>
