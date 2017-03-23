@@ -1,5 +1,8 @@
-import javax.management.*;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -48,45 +51,227 @@ public class UI {
 
     private String simpleQuery(){
         Query query1 = queryInput();
+        //TODO llamar al metodo respectivo en QueryAdministrator
         return null;
     }
 
     private String complexQuery(){
         Query query1 = queryInput();
         Query query2 = queryInput();
+        boolean validated = false;
+        while(!validated){
+            System.out.println("Please type 0 to use an AND operator, or a 1 for an OR operator");
+            int operator = reader.nextInt();
+            if(operator == 0) {
+                queryAdministrator.complexQueryExecutor(query1, query2, false);
+                validated = true;
+            } else if(operator == 1){
+                queryAdministrator.complexQueryExecutor(query1, query2, true);
+                validated = true;
+            } else
+                System.out.println("Invalid input. Please try again. ");
+        }
+        //TODO falta llamar al metodo respectivo y el string builder con la cantidad de cols que quiere desplegar.
         return null;
     }
 
     private Query queryInput(){
-        System.out.println("Type 1 if you're searching for a specific value of a field or 2 if you want to ask for a range of values.");
-        int typeInput = reader.nextInt();
-        if(typeInput == 1){
-            System.out.println("Type the field you want to ask for: ");
-            String field = reader.next();
-            //TODO: validar que existe y devolver tipo
-            Class clase = null; //queryAdministrator.validateField(field);
-            switch (clase.getName()){
-                case "String":
-                    break;
-                case "Integer":
-                    break;
-                case "Double":
-                    break;
-                case "Date":
-                    break;
-                case "Boolean":
-                    break;
+        boolean isSolved = false;
+        Query query = null;
+        while(!isSolved) {
+            System.out.println("Type 1 if you're searching for a specific value of a field or 2 if you want to ask for a range of values.");
+            int typeInput = reader.nextInt();
+            if (typeInput == 1) {
+                System.out.println("Type the field you want to ask for: ");
+                String type = reader.next();
+                queryAdministrator.getFieldDataType(type);
+                switch (type) {
+                    case "int": //el enunciado dice que la persona deberia poner la categoria como int, no Integer.
+                        System.out.println("Which is the specific number you're searching for?");
+                        int tempInt = reader.nextInt();
+                        query = new Query(Query.QueryType.EQUALITY, tempInt);
+                        isSolved = true;
+                        break;
+                    case "double":
+                        System.out.println("Which is the specific number you're searching for?");
+                        double tempDouble = reader.nextDouble();
+                        query = new Query(Query.QueryType.EQUALITY, tempDouble);
+                        isSolved = true;
+                        break;
+                    case "date":
+                        System.out.println("Which is the specific date (format dd/MM/yyyy) you're searching for?");
+                        String date = reader.next();
+                        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                        Date tempDate = null;
+                        try{
+                            tempDate = df.parse(date);
+                        } catch (ParseException exception) {
+                            exception.printStackTrace();
+                        }
+                        query = new Query(Query.QueryType.EQUALITY, tempDate);
+                        isSolved = true;
+
+                        break;
+                    case "String":
+                        System.out.println("Please type what you're looking for. ");
+                        String tempString = reader.next();
+                        query = new Query(Query.QueryType.EQUALITY, tempString);
+                        isSolved = true;
+                        break;
+                    case "bool":
+                        System.out.println("Please type \"true\" or \"false\". ");
+                        String tempBool = reader.next();
+                        if(tempBool.equals("true") || tempBool.equals("false")) {
+                            query = new Query(Query.QueryType.EQUALITY, tempBool);
+                            isSolved = true;
+                        } else
+                            System.out.println("Invalid input. Please try again. ");
+                        break;
+                }
+
+            } else if (typeInput == 2) {
+                System.out.println("Type the field you want to ask for: ");
+                String type = reader.next();
+                queryAdministrator.getFieldDataType(type);
+                switch (type) {
+                    case "int": //el enunciado dice que la persona deberia poner la categoria como int, no Integer.
+                        System.out.println("Would you like your range to be defined by 2 numbers or by 1 number? Please type the quantity. ");
+                        int intQuantity = reader.nextInt();
+                        if(intQuantity == 1){
+                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Greater than x" +
+                                    "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x");
+                            int inequality = reader.nextInt();
+                            if(inequality <= 4 && inequality > 0){
+                                System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
+                                int tempInt = reader.nextInt();
+                                if(inequality == 1 || inequality == 2)
+                                    query = new Query(Query.QueryType.INEQUALITY, tempInt, Integer.MAX_VALUE, inequality);
+                                else
+                                    query = new Query(Query.QueryType.INEQUALITY, Integer.MIN_VALUE, tempInt, inequality);
+
+                                isSolved = true;
+                            }
+
+
+                        } else if(intQuantity == 2){
+                            System.out.println("Please type the smallest value (x) for your range. ");
+                            int minInt = reader.nextInt();
+                            System.out.println("Please type the biggest value (y) for your range. ");
+                            int maxInt = reader.nextInt();
+                            if(minInt < maxInt) {
+                                query = new Query(Query.QueryType.RANGE, minInt, maxInt, 2); //no estoy segura de esto.
+                                isSolved = true;
+                            } else
+                                System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
+
+
+                        } else
+                            System.out.println("Invalid number. Please try again. ");
+
+                        break;
+
+                    case "double":
+                        System.out.println("Would you like your range to be defined by 2 numbers or by 1 number? Please type the quantity. ");
+                        double doubleQuantity = reader.nextDouble();
+                        if(doubleQuantity == 1){
+                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Greater than x" +
+                                    "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x");
+                            int inequality = reader.nextInt();
+                            if(inequality <= 4 && inequality > 0){
+                                System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
+                                double tempDouble = reader.nextInt();
+                                if(inequality == 1 || inequality == 2)
+                                    query = new Query(Query.QueryType.INEQUALITY, tempDouble, Double.MAX_VALUE, inequality);
+                                else
+                                    query = new Query(Query.QueryType.INEQUALITY, Double.MIN_VALUE, tempDouble, inequality);
+
+                                isSolved = true;
+                            }
+
+
+                        } else if(doubleQuantity == 2){
+                            System.out.println("Please type the smallest value (x) for your range. ");
+                            double minDouble = reader.nextInt();
+                            System.out.println("Please type the biggest value (y) for your range. ");
+                            double maxDouble = reader.nextInt();
+                            if(minDouble < maxDouble) {
+                                query = new Query(Query.QueryType.RANGE, minDouble, maxDouble, 2); //no estoy segura de esto.
+                                isSolved = true;
+                            } else
+                                System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
+
+
+                        } else
+                            System.out.println("Invalid number. Please try again. ");
+                        break;
+
+                    case "date":
+                        System.out.println("Would you like your range to be defined by 2 dates or by 1 date? Please type the quantity. ");
+                        int quantity = reader.nextInt();
+                        if(quantity == 1){
+                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Greater than x" +
+                                    "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x");
+                            int inequality = reader.nextInt();
+                            if(inequality <= 4 && inequality > 0){
+                                System.out.println("Now that you typed the inequality, please type the fixed date (dd/MM/yyyy) you want to search with");
+                                String date = reader.next();
+                                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                                Date tempDate = null;
+                                try{
+                                    tempDate = df.parse(date);
+                                } catch (ParseException exception) {
+                                    exception.printStackTrace();
+                                }
+                                if(inequality == 1 || inequality == 2)
+                                    query = new Query(Query.QueryType.INEQUALITY, tempDate, new Date(), inequality); //revisar luego
+                                else
+                                    query = new Query(Query.QueryType.INEQUALITY, new Date(00/00/0000), tempDate, inequality);
+
+                                isSolved = true;
+                            }
+
+
+                        } else if(quantity == 2){
+                            System.out.println("Please type the smallest date (x) for your range. ");
+                            String date = reader.next();
+                            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                            Date minDate = null;
+                            try{
+                                minDate = df.parse(date);
+                            } catch (ParseException exception) {
+                                exception.printStackTrace();
+                            }
+                            System.out.println("Please type the biggest date (y) for your range. ");
+                            date = reader.next();
+                            Date maxDate = null;
+                            try{
+                                maxDate = df.parse(date);
+                            } catch (ParseException exception) {
+                                exception.printStackTrace();
+                            }
+                            if(minDate.compareTo(maxDate) < 0) {
+                                query = new Query(Query.QueryType.RANGE, minDate, maxDate, 2); //no estoy segura de esto.
+                                isSolved = true;
+                            } else
+                                System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
+
+
+                        } else
+                            System.out.println("Invalid number. Please try again. ");
+                        break;
+
+                    case "String":
+                    case "bool":
+                        System.out.println("It is not possible to search by range with the category you selected. Please try again. ");
+                        break;
+
+
+                }
             }
-
         }
-        else{
 
-        }
-        return null;
+        return query;
     }
 
-    private boolean categoryValidator(){
-        return true;
-    }
 
 }
