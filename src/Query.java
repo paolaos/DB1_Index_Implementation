@@ -4,7 +4,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.xs.TypeValidator;
  * Created by Rodrigo on 3/19/2017.
  */
 public class Query<T extends Comparable> {
-    private enum QueryType{EQUALITY,INEQUALITY, RANGE};
+    enum QueryType{EQUALITY,INEQUALITY, RANGE};
     private QueryType queryType;
     private String field;
     private String value;
@@ -19,7 +19,7 @@ public class Query<T extends Comparable> {
     }
 
     //Constructor for Comparable Range.
-    public Query(QueryType type,String field, T value1, T value2 ){
+    public Query(QueryType type,String field, T value1, T value2, int inequality ){
         queryType = type;
         this.value1 = value1;
         this.value2 = value2;

@@ -89,13 +89,13 @@ public class UI {
                     case "int": //el enunciado dice que la persona deberia poner la categoria como int, no Integer.
                         System.out.println("Which is the specific number you're searching for?");
                         int tempInt = reader.nextInt();
-                        query = new Query(Query.QueryType.EQUALITY, tempInt);
+                        query = new Query(Query.QueryType.EQUALITY,type, tempInt);
                         isSolved = true;
                         break;
                     case "double":
                         System.out.println("Which is the specific number you're searching for?");
                         double tempDouble = reader.nextDouble();
-                        query = new Query(Query.QueryType.EQUALITY, tempDouble);
+                        query = new Query(Query.QueryType.EQUALITY,type, tempDouble);
                         isSolved = true;
                         break;
                     case "date":
@@ -108,21 +108,21 @@ public class UI {
                         } catch (ParseException exception) {
                             exception.printStackTrace();
                         }
-                        query = new Query(Query.QueryType.EQUALITY, tempDate);
+                        query = new Query(Query.QueryType.EQUALITY, type, tempDate);
                         isSolved = true;
 
                         break;
                     case "String":
                         System.out.println("Please type what you're looking for. ");
                         String tempString = reader.next();
-                        query = new Query(Query.QueryType.EQUALITY, tempString);
+                        query = new Query(Query.QueryType.EQUALITY, type, tempString);
                         isSolved = true;
                         break;
                     case "bool":
                         System.out.println("Please type \"true\" or \"false\". ");
                         String tempBool = reader.next();
                         if(tempBool.equals("true") || tempBool.equals("false")) {
-                            query = new Query(Query.QueryType.EQUALITY, tempBool);
+                            query = new Query(Query.QueryType.EQUALITY, type, tempBool);
                             isSolved = true;
                         } else
                             System.out.println("Invalid input. Please try again. ");
@@ -145,9 +145,9 @@ public class UI {
                                 System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
                                 int tempInt = reader.nextInt();
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, tempInt, Integer.MAX_VALUE, inequality);
+                                    query = new Query(Query.QueryType.INEQUALITY, type, tempInt, Integer.MAX_VALUE, inequality);
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY, Integer.MIN_VALUE, tempInt, inequality);
+                                    query = new Query(Query.QueryType.INEQUALITY,type, Integer.MIN_VALUE, tempInt, inequality);
 
                                 isSolved = true;
                             }
@@ -159,7 +159,7 @@ public class UI {
                             System.out.println("Please type the biggest value (y) for your range. ");
                             int maxInt = reader.nextInt();
                             if(minInt < maxInt) {
-                                query = new Query(Query.QueryType.RANGE, minInt, maxInt, 2); //no estoy segura de esto.
+                                query = new Query(Query.QueryType.RANGE, type, minInt, maxInt, 2); //no estoy segura de esto.
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
@@ -181,9 +181,9 @@ public class UI {
                                 System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
                                 double tempDouble = reader.nextInt();
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, tempDouble, Double.MAX_VALUE, inequality);
+                                    query = new Query(Query.QueryType.INEQUALITY, type, tempDouble, Double.MAX_VALUE, inequality);
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY, Double.MIN_VALUE, tempDouble, inequality);
+                                    query = new Query(Query.QueryType.INEQUALITY, type, Double.MIN_VALUE, tempDouble, inequality);
 
                                 isSolved = true;
                             }
@@ -195,7 +195,7 @@ public class UI {
                             System.out.println("Please type the biggest value (y) for your range. ");
                             double maxDouble = reader.nextInt();
                             if(minDouble < maxDouble) {
-                                query = new Query(Query.QueryType.RANGE, minDouble, maxDouble, 2); //no estoy segura de esto.
+                                query = new Query(Query.QueryType.RANGE, type, minDouble, maxDouble, 2); //no estoy segura de esto.
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
@@ -223,9 +223,9 @@ public class UI {
                                     exception.printStackTrace();
                                 }
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, tempDate, new Date(), inequality); //revisar luego
+                                    query = new Query(Query.QueryType.INEQUALITY, type, tempDate, new Date(), inequality); //revisar luego
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY, new Date(00/00/0000), tempDate, inequality);
+                                    query = new Query(Query.QueryType.INEQUALITY, type, new Date(00/00/0000), tempDate, inequality);
 
                                 isSolved = true;
                             }
@@ -250,7 +250,7 @@ public class UI {
                                 exception.printStackTrace();
                             }
                             if(minDate.compareTo(maxDate) < 0) {
-                                query = new Query(Query.QueryType.RANGE, minDate, maxDate, 2); //no estoy segura de esto.
+                                query = new Query(Query.QueryType.RANGE, type, minDate, maxDate, 2); //no estoy segura de esto.
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
