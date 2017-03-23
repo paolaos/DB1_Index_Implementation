@@ -75,11 +75,13 @@ public class UI {
         return null;
     }
 
+    //TODO poner en el metodo el caso de que no sea igual.
+
     private Query queryInput(){
         boolean isSolved = false;
         Query query = null;
         while(!isSolved) {
-            System.out.println("Type 1 if you're searching for a specific value of a field or 2 if you want to ask for a range of values.");
+            System.out.println("Type 1 if you want to base your search on a specific number, or 2 if you want to search through a range of values.");
             int typeInput = reader.nextInt();
             if (typeInput == 1) {
                 System.out.println("Type the field you want to ask for: ");
@@ -87,19 +89,41 @@ public class UI {
                 queryAdministrator.getFieldDataType(type);
                 switch (type) {
                     case "int": //el enunciado dice que la persona deberia poner la categoria como int, no Integer.
-                        System.out.println("Which is the specific number you're searching for?");
+                        System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
+                        int equality = reader.nextInt();
+                        System.out.println("Please type the specific number. ");
                         int tempInt = reader.nextInt();
-                        query = new Query(Query.QueryType.EQUALITY,type, tempInt);
-                        isSolved = true;
+                        if(equality == 1){
+                            query = new Query(Query.QueryType.EQUALITY,type, tempInt);
+                            isSolved = true;
+                        } else if(equality == 2){
+                            query = new Query(Query.QueryType.INEQUALITY,type, tempInt);
+                            isSolved = true;
+                        } else
+                            System.out.println("Invalid input. Please try again. ");
+
                         break;
+
                     case "double":
-                        System.out.println("Which is the specific number you're searching for?");
+                        System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
+                        equality = reader.nextInt();
+                        System.out.println("Please type the specific number. ");
                         double tempDouble = reader.nextDouble();
-                        query = new Query(Query.QueryType.EQUALITY,type, tempDouble);
-                        isSolved = true;
+                        if(equality == 1){
+                            query = new Query(Query.QueryType.EQUALITY,type, tempDouble);
+                            isSolved = true;
+                        } else if(equality == 2){
+                            query = new Query(Query.QueryType.INEQUALITY,type, tempDouble);
+                            isSolved = true;
+                        } else
+                            System.out.println("Invalid input. Please try again. ");
+
                         break;
+
                     case "date":
-                        System.out.println("Which is the specific date (format dd/MM/yyyy) you're searching for?");
+                        System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
+                        equality = reader.nextInt();
+                        System.out.println("Please type the specific date. ");
                         String date = reader.next();
                         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                         Date tempDate = null;
@@ -108,22 +132,47 @@ public class UI {
                         } catch (ParseException exception) {
                             exception.printStackTrace();
                         }
-                        query = new Query(Query.QueryType.EQUALITY, type, tempDate);
-                        isSolved = true;
+                        if(equality == 1){
+                            query = new Query(Query.QueryType.EQUALITY,type, tempDate);
+                            isSolved = true;
+                        } else if(equality == 2){
+                            query = new Query(Query.QueryType.INEQUALITY,type, tempDate);
+                            isSolved = true;
+                        } else
+                            System.out.println("Invalid input. Please try again. ");
 
                         break;
                     case "String":
+                        System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
+                        equality = reader.nextInt();
                         System.out.println("Please type what you're looking for. ");
                         String tempString = reader.next();
-                        query = new Query(Query.QueryType.EQUALITY, type, tempString);
-                        isSolved = true;
+                        if(equality == 1){
+                            query = new Query(Query.QueryType.EQUALITY,type, tempString);
+                            isSolved = true;
+                        } else if(equality == 2){
+                            query = new Query(Query.QueryType.INEQUALITY,type, tempString);
+                            isSolved = true;
+                        } else
+                            System.out.println("Invalid input. Please try again. ");
+
                         break;
                     case "bool":
+                        System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
+                        equality = reader.nextInt();
                         System.out.println("Please type \"true\" or \"false\". ");
                         String tempBool = reader.next();
                         if(tempBool.equals("true") || tempBool.equals("false")) {
-                            query = new Query(Query.QueryType.EQUALITY, type, tempBool);
-                            isSolved = true;
+                            if(equality == 1){
+                                query = new Query(Query.QueryType.EQUALITY,type, tempBool);
+                                isSolved = true;
+                            }
+                            else if(equality == 2){
+                                query = new Query(Query.QueryType.INEQUALITY,type, tempBool);
+                                isSolved = true;
+                            }
+                            else
+                                System.out.println("Invalid input. Please try again. ");
                         } else
                             System.out.println("Invalid input. Please try again. ");
                         break;
@@ -145,9 +194,9 @@ public class UI {
                                 System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
                                 int tempInt = reader.nextInt();
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, type, tempInt, Integer.MAX_VALUE, inequality);
+                                    query = new Query(Query.QueryType.RANGE, type, tempInt, Integer.MAX_VALUE, inequality);
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY,type, Integer.MIN_VALUE, tempInt, inequality);
+                                    query = new Query(Query.QueryType.RANGE,type, Integer.MIN_VALUE, tempInt, inequality);
 
                                 isSolved = true;
                             }
@@ -181,9 +230,9 @@ public class UI {
                                 System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
                                 double tempDouble = reader.nextInt();
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, type, tempDouble, Double.MAX_VALUE, inequality);
+                                    query = new Query(Query.QueryType.RANGE, type, tempDouble, Double.MAX_VALUE, inequality);
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY, type, Double.MIN_VALUE, tempDouble, inequality);
+                                    query = new Query(Query.QueryType.RANGE, type, Double.MIN_VALUE, tempDouble, inequality);
 
                                 isSolved = true;
                             }
@@ -223,9 +272,9 @@ public class UI {
                                     exception.printStackTrace();
                                 }
                                 if(inequality == 1 || inequality == 2)
-                                    query = new Query(Query.QueryType.INEQUALITY, type, tempDate, new Date(), inequality); //revisar luego
+                                    query = new Query(Query.QueryType.RANGE, type, tempDate, new Date(), inequality); //revisar luego
                                 else
-                                    query = new Query(Query.QueryType.INEQUALITY, type, new Date(00/00/0000), tempDate, inequality);
+                                    query = new Query(Query.QueryType.RANGE, type, new Date(00/00/0000), tempDate, inequality);
 
                                 isSolved = true;
                             }
