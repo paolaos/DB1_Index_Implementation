@@ -60,43 +60,61 @@ public class UI {
         Query query1 = queryInput();
 
         List<Integer> resultantList = queryAdministrator.simpleQueryExecutor(query1);
-        System.out.println("");
-        //for(int i = 0;  )
+        int[] columns = this.columnSpecificationValidator();
 
-        return null;//queryAdministrator.;
+        return queryAdministrator.resultBuilder(columns, resultantList);
     }
 
-    private String columnSpecificationValidator(){
-        System.out.println("Please use the format \"number,number,...\" to specify which columns you'd like to have displayed. The options go as follows: ");
-        for(int i = 1; i < queryAdministrator.getFields().length; i++)
-            System.out.println("\tType " + i + "to display by " + queryAdministrator.getFields()[i]); //TODO ver si esta bien el i del # con el de getFields.
+    private int[] columnSpecificationValidator(){
+        boolean solved = false;
+        int[] finalArray = null;
+        while(!solved) {
+            System.out.println("Please use the format \"number,number,...\" to specify which columns you'd like to have displayed. The options go as follows: ");
+            for (int i = 1; i < queryAdministrator.getFields().length; i++)
+                System.out.println("\tType " + i + "to display by " + queryAdministrator.getFields()[i]); //TODO ver si esta bien el i del # con el de getFields.
 
-        String columns = reader.next();
-        String[] stringArray = columns.split(",");
-        int[] finalArray = new int[stringArray.length];
-        if(stringArray.length <= queryAdministrator.getFields().length) {
-            for (int i = 0; i < stringArray.length; i++){
-                //if(stringArray[i].matches())
-            }
+            String columns = reader.next();
+            String[] stringArray = columns.split(",");
+            finalArray = new int[stringArray.length];
+            if (stringArray.length <= queryAdministrator.getFields().length) {
+                for (int i = 0; i < stringArray.length; i++) {
+                    if (stringArray[i].matches("[0,9]+")) {
+                        int temp = Integer.parseInt(stringArray[i]);
+                        if(temp <= stringArray.length){
+                            finalArray[i] = temp;
+                        }
+                    } else
+                        throw new ArrayIndexOutOfBoundsException("Fatal error: one of the inputs doesn't match the format ");
+
+                }
+                solved = true;
+
+            } else
+                System.out.println("Invalid input. Please try again. ");
+
         }
-        return null;
+        return finalArray;
     }
 
     private String complexQuery(){
         Query query1 = queryInput();
         Query query2 = queryInput();
+        List<Integer> finalList = null;
+        String result = null;
         boolean validated = false;
         while(!validated){
             System.out.println("Please type 1 to use an AND operator, or a 0 for an OR operator");
             int operator = reader.nextInt();
             if(operator == 0) {
-                queryAdministrator.complexQueryExecutor(query1, query2, false);
+                finalList = queryAdministrator.complexQueryExecutor(query1, query2, false);
+
                 validated = true;
             } else if(operator == 1){
-                queryAdministrator.complexQueryExecutor(query1, query2, true);
+                finalList = queryAdministrator.complexQueryExecutor(query1, query2, true);
                 validated = true;
             } else
                 System.out.println("Invalid input. Please try again. ");
+
         }
         //TODO falta llamar al metodo respectivo y el string builder con la cantidad de cols que quiere desplegar.
         return null;
