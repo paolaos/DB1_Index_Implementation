@@ -18,7 +18,7 @@ public abstract class QueryAdministrator<T>{
     protected int rows;
     protected int columns;
     protected boolean validFile;
-    protected String[] fields;
+    private String[] fields;
     protected String[] fieldsDataTypes;
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 
@@ -57,12 +57,10 @@ public abstract class QueryAdministrator<T>{
         validFile = true;
     }
 
-    /*este metodo esta hecho para que devuelva el tipo de dato asociado a una categoria. No encontre la forma de tener un
-    arreglo con diferentes tipos de clases, asi que mantuve el String array. Si encontras otra forma de hacerlo me avisas.
-     */
+
     public String getFieldDataType(String category){
-        for(int i = 0; i < fields.length; i++){
-            if(fields[i].equals(category))
+        for(int i = 0; i < getFields().length; i++){
+            if(getFields()[i].equals(category))
                 return fieldsDataTypes[i];
 
         }
@@ -71,21 +69,47 @@ public abstract class QueryAdministrator<T>{
 
     }
 
+    public List<Integer> simpleQueryExecutor(Query query){
+        if(query.getQueryType() == QueryType.EQUALITY || query.getQueryType() == QueryType.INEQUALITY)
+            return simpleEqualityQueryExecutor(query);
 
-    public String resultBuilder(String specifiedColumns, List<Integer> finalQuery){
-        return null;
+        return simpleRangeQueryExecutor(query);
     }
+
+    public  List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive){
+        List<Integer> result1 = simpleQueryExecutor(query1);
+        List<Integer> result2 = simpleQueryExecutor(query2);
+        List<Integer> finalResult = new LinkedList<>();
+        Iterator<Integer> it1 = result1.iterator();
+        if(isDisjunctive){
+            while(it1.hasNext()){
+                Integer currentInt = it1.next();
+                if(result2.contains(currentInt)) finalResult.add(currentInt);
+            }
+        }
+        else{
+            while (it1.hasNext()) finalResult.add(it1.next());
+            Iterator<Integer> it2 = result2.iterator();
+            while (it2.hasNext()){
+                Integer currentInt = it2.next();
+                if(!finalResult.contains(currentInt)) finalResult.add(currentInt);
+            }
+        }
+        return finalResult;
+    }
+
+    public String[] getFields() {
+        return fields;
+    }
+
+
+    public abstract String resultBuilder(int[] specifiedColumns, List<Integer> results);
 
     public abstract void storeData() throws IOException, ParseException;
 
     public abstract List<Integer> simpleEqualityQueryExecutor(Query query);
 
     public abstract List<Integer> simpleRangeQueryExecutor(Query query);
-
-    public abstract List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive);
-
-
-
 
 
 

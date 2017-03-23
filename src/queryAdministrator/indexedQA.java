@@ -48,4 +48,11 @@ public class indexedQA extends QueryAdministrator {
     public List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive) {
         return null;
     }
+
+    @Override
+    public String resultBuilder(int[] specifiedColumns, List results) {
+        return null;
+    }
+
+
 }
