@@ -10,8 +10,8 @@ public class QueryAdministrator<T>{
     private Hashtable<Integer, Index> indexes;
     private UI ui;
     private File file;
-    private String[] dataCategories;
-    private String[] dataTypes;
+    private String[] fields;
+    private String[] fieldsDataTypes;
     public QueryAdministrator(File file){
         this.file = file;
     }
@@ -33,18 +33,18 @@ public class QueryAdministrator<T>{
             exception.printStackTrace();
         }
 
-        dataCategories = categories.split(",");
-        dataTypes = types.split(",");
+        fields = categories.split(",");
+        fieldsDataTypes = types.split(",");
         //secciono en dos arreglos. Uno de categorías (primera línea) y el otro de tipos (segunda línea).
 
-        if(dataCategories.length != dataTypes.length)
+        if(fields.length != fieldsDataTypes.length)
             throw new StringIndexOutOfBoundsException("The amount of categories do not match with the amount of data types. Please check the file and try again later. ");
         //valido que sean del mismo tamaño
 
-        for(int i = 0; i < dataTypes.length; i++){
-            if(!(dataTypes[i].equals("String") || dataTypes[i].equals("int")
-                    || dataTypes[i].equals("double") || dataTypes[i].equals("date")
-                    || dataTypes[i].equals("bool")))
+        for(int i = 0; i < fieldsDataTypes.length; i++){
+            if(!(fieldsDataTypes[i].equals("String") || fieldsDataTypes[i].equals("int")
+                    || fieldsDataTypes[i].equals("double") || fieldsDataTypes[i].equals("date")
+                    || fieldsDataTypes[i].equals("bool")))
                 throw new StringIndexOutOfBoundsException("One of the data types isn't recognized by the program. Please check the file and try again. ");
         }
         //valido que sean de un tipo aceptable
@@ -53,10 +53,10 @@ public class QueryAdministrator<T>{
     /*este metodo esta hecho para que devuelva el tipo de dato asociado a una categoria. No encontre la forma de tener un
     arreglo con diferentes tipos de clases, asi que mantuve el String array. Si encontras otra forma de hacerlo me avisas.
      */
-    private String getDataType(String category){
-        for(int i = 0; i < dataCategories.length; i++){
-            if(dataCategories[i].equals(category))
-                return dataTypes[i];
+    private String getFieldDataType(String category){
+        for(int i = 0; i < fields.length; i++){
+            if(fields[i].equals(category))
+                return fieldsDataTypes[i];
 
         }
 
