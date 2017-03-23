@@ -1,4 +1,5 @@
-import java.util.Hashtable;
+package index;
+
 import java.util.List;
 import java.util.TreeMap;
 

@@ -1,3 +1,9 @@
+package ui;
+
+import query.Query;
+import queryAdministrator.QueryAdministrator;
+import queryAdministrator.listQA;
+
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -22,17 +28,17 @@ public class UI {
             filePath = reader.next();
             file = new File(filePath);
         }
-        queryAdministrator = new QueryAdministrator(file);
+        queryAdministrator = new listQA(file);
 
         System.out.println("Please type 1 if you want a simple query or 2 if you want a complex query. ");
         int query = reader.nextInt();
         String queryResult;
         if(query == 1){
-            System.out.println("Simple Query");
+            System.out.println("Simple query");
              queryResult = simpleQuery();
         }
         else{
-            System.out.println("Complex Query");
+            System.out.println("Complex query");
             queryResult = complexQuery();
         }
         System.out.println(queryResult);
@@ -51,7 +57,7 @@ public class UI {
 
     private String simpleQuery(){
         Query query1 = queryInput();
-        //TODO llamar al metodo respectivo en QueryAdministrator
+        //TODO llamar al metodo respectivo en queryAdministrator.QueryAdministrator
         return null;
     }
 

@@ -1,3 +1,5 @@
+package ui;
+
 import java.util.Iterator;
 
 /**
@@ -11,7 +13,7 @@ public class Main {
         for(int i = 0; i < array.length; i++)
             System.out.println(array[i]);
 
-        //UI ui = new UI();
+        //ui.UI ui = new ui.UI();
 
     }
 

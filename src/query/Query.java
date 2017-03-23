@@ -1,10 +1,9 @@
-import com.sun.org.apache.xerces.internal.impl.dv.xs.TypeValidator;
+package query;
 
 /**
  * Created by Rodrigo on 3/19/2017.
  */
 public class Query<T extends Comparable> {
-    enum QueryType{EQUALITY,INEQUALITY, RANGE};
     private QueryType queryType;
     private String field;
     private String value;
