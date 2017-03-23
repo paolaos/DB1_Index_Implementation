@@ -1,26 +1,40 @@
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Paola Ortega S on 3/16/2017.
  */
 public class QueryAdministrator<T>{
+    /*
+    //Version eficiente
     private Hashtable<Integer, String> data;
     private Hashtable<Integer, Index> indexes;
+    */
+
+    //Version ineficiente
+    private List data;
     private UI ui;
     private File file;
+    private int rows;
+    private int columns;
+    private boolean validFile;
     private String[] fields;
     private String[] fieldsDataTypes;
+    private SimpleDateFormat dateFormat;
     public QueryAdministrator(File file){
         this.file = file;
+        validFile = false;
+        data = new LinkedList();
+        dateFormat = new SimpleDateFormat("dd/MM/yy");
     }
 
-    public QueryAdministrator(){
 
-    }
-
-    public void validateDataTypes(){
+    public void validateDataTypes() throws IOException {
         BufferedReader reader = null;
         String categories = null;
         String types = null;
@@ -37,6 +51,7 @@ public class QueryAdministrator<T>{
         fieldsDataTypes = types.split(",");
         //secciono en dos arreglos. Uno de categorías (primera línea) y el otro de tipos (segunda línea).
 
+        columns = fields.length;
         if(fields.length != fieldsDataTypes.length)
             throw new StringIndexOutOfBoundsException("The amount of categories do not match with the amount of data types. Please check the file and try again later. ");
         //valido que sean del mismo tamaño
@@ -48,12 +63,14 @@ public class QueryAdministrator<T>{
                 throw new StringIndexOutOfBoundsException("One of the data types isn't recognized by the program. Please check the file and try again. ");
         }
         //valido que sean de un tipo aceptable
+        reader.close();
+        validFile = true;
     }
 
     /*este metodo esta hecho para que devuelva el tipo de dato asociado a una categoria. No encontre la forma de tener un
     arreglo con diferentes tipos de clases, asi que mantuve el String array. Si encontras otra forma de hacerlo me avisas.
      */
-    private String getFieldDataType(String category){
+    public String getFieldDataType(String category){
         for(int i = 0; i < fields.length; i++){
             if(fields[i].equals(category))
                 return fieldsDataTypes[i];
@@ -64,23 +81,51 @@ public class QueryAdministrator<T>{
 
     }
 
-    public void storeData(File file){
+    public void storeData() throws IOException, ParseException {
+        assert(validFile);
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        //Skip first two lines.
+        reader.readLine();reader.readLine();
+
+        String currentLine;
+        while((currentLine= reader.readLine()) != null){
+            List row = new LinkedList();
+            String[] lineArray = currentLine.split(",");
+            for (int i = 0; i < columns ; i++) {
+                switch (fieldsDataTypes[i]){
+                    case "String":
+                        row.add(lineArray[i]);
+                        break;
+                    case "Integer":
+                        Integer intNumber = Integer.parseInt(lineArray[i]);
+                        row.add(intNumber);
+                        break;
+                    case "Double":
+                        Double doubleNumber = Double.parseDouble(lineArray[i]);
+                        row.add(doubleNumber);
+                        break;
+                    case "Date":
+                        Date date = dateFormat.parse(lineArray[i]);
+                        row.add(date);
+                        break;
+                    case "Boolean":
+                        Boolean bool = Boolean.parseBoolean(lineArray[i]);
+                        row.add(bool);
+                        break;
+                }
+            }
+            data.add(row);
+            rows++;
+        }
+
 
     }
 
-    public void createIndex(){
 
-    }
 
-    public List<Integer> consultIndex(){
-        return null;
-    }
-
-    public boolean validateQuery(String input){
-        return true;
-    }
 
     public List<Integer> simpleRangeQueryExecutor(Query query){
+
         return null;
     }
 
@@ -96,13 +141,15 @@ public class QueryAdministrator<T>{
         return null;
     }
 
-    private String fetchRow(int rowNumber){
+
+
+
+    public void createIndex(){
+
+    }
+
+    public List<Integer> consultIndex(){
         return null;
     }
 
-
-    /*public Class getField(String field) {
-        Class result;
-        return "".getClass();
-    }*/
 }
