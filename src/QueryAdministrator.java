@@ -1,10 +1,7 @@
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Hashtable;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Paola Ortega S on 3/16/2017.
@@ -17,7 +14,7 @@ public class QueryAdministrator<T>{
     */
 
     //Version ineficiente
-    private List data;
+    private List<LinkedList> data;
     private UI ui;
     private File file;
     private int rows;
@@ -130,6 +127,23 @@ public class QueryAdministrator<T>{
     }
 
     public List<Integer> simpleInequalityQueryExecutor(Query query){
+        List<Integer> result = new LinkedList<>();
+        int column=0;
+        String queryField = query.getField();
+        for (int i = 0; i < columns ; i++) {
+            if(queryField.equals(fields[i])) column=i;
+        }
+        for (int i = 0; i < rows ; i++) {
+            Comparable value = (Comparable) data.get(i).get(column);
+            if(query.getQueryType() == QueryType.EQUALITY){
+                if(query.getValue1().compareTo(value)==0) result.add(i);
+            }else{
+                if(query.getValue1())
+            }
+
+        }
+
+
         return null;
     }
 

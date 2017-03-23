@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4c38a3f0-086a-4a91-950e-d57e8e5bf31e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Query.java" afterPath="$PROJECT_DIR$/src/Query.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/QueryAdministrator.java" afterPath="$PROJECT_DIR$/src/QueryAdministrator.java" />
     </list>
     <ignored path="TP1_Bases1.iws" />
@@ -47,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryAdministrator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QueryAdministrator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/QueryAdministrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1136">
-              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state relative-caret-position="1723">
+              <caret line="140" column="36" lean-forward="false" selection-start-line="140" selection-start-column="36" selection-end-line="140" selection-end-column="36" />
               <folding>
                 <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
                 <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
@@ -62,7 +61,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Query.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EqualityIndex.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EqualityIndex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Query.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Query.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1820">
@@ -102,8 +111,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/UI.java" />
-        <option value="$PROJECT_DIR$/src/QueryAdministrator.java" />
         <option value="$PROJECT_DIR$/src/Query.java" />
+        <option value="$PROJECT_DIR$/src/QueryAdministrator.java" />
       </list>
     </option>
   </component>
@@ -707,7 +716,7 @@
       <updated>1489973137830</updated>
       <workItem from="1489981651198" duration="8353000" />
       <workItem from="1490246529230" duration="35000" />
-      <workItem from="1490246716116" duration="6340000" />
+      <workItem from="1490246716116" duration="8434000" />
     </task>
     <task id="LOCAL-00001" summary="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's">
       <created>1489991384516</created>
@@ -744,11 +753,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490247376690</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Query field agregado.&#10;Implementacion metodos de QueryAdministrator">
+      <created>1490253119402</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1490253119402</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14728000" />
+    <option name="totallyTimeSpent" value="16822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="3725" height="2188" extended-state="6" />
@@ -802,7 +818,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's" />
     <MESSAGE value="Cambios a nombres de campos y un metodo de QueryAdministrator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios a nombres de campos y un metodo de QueryAdministrator" />
+    <MESSAGE value="Query field agregado.&#10;Implementacion metodos de QueryAdministrator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Query field agregado.&#10;Implementacion metodos de QueryAdministrator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -927,19 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/QueryAdministrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1136">
-          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding>
-            <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="method#storeData#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="method#createIndex#0;class#QueryAdministrator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Query.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1820">
@@ -953,6 +957,27 @@
             <element signature="e#1139#1140#0" expanded="true" />
             <element signature="e#1167#1168#0" expanded="true" />
             <element signature="e#1196#1197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EqualityIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/QueryAdministrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1723">
+          <caret line="140" column="36" lean-forward="false" selection-start-line="140" selection-start-column="36" selection-end-line="140" selection-end-column="36" />
+          <folding>
+            <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
+            <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
+            <element signature="method#storeData#0;class#QueryAdministrator#0" expanded="false" />
+            <element signature="method#createIndex#0;class#QueryAdministrator#0" expanded="false" />
           </folding>
         </state>
       </provider>
