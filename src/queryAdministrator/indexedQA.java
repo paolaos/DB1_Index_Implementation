@@ -75,19 +75,19 @@ public class indexedQA extends QueryAdministrator {
                     case "String":
                         index.addObject(lineArray[i],rows);
                         break;
-                    case "Integer":
+                    case "int":
                         Integer intNumber = Integer.parseInt(lineArray[i]);
                         index.addObject(intNumber,rows);
                         break;
-                    case "Double":
+                    case "double":
                         Double doubleNumber = Double.parseDouble(lineArray[i]);
                         index.addObject(doubleNumber,rows);
                         break;
-                    case "Date":
+                    case "date":
                         Date date = dateFormat.parse(lineArray[i]);
                         index.addObject(date,rows);
                         break;
-                    case "Boolean":
+                    case "bool":
                         index.addObject(lineArray[i],rows);
                         break;
                 }

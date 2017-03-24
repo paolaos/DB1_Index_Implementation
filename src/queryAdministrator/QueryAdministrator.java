@@ -20,7 +20,7 @@ public abstract class QueryAdministrator<T>{
     protected boolean validFile;
     protected String[] fields;
     protected String[] fieldsDataTypes;
-    protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+    protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 
 
@@ -77,8 +77,12 @@ public abstract class QueryAdministrator<T>{
     }
 
     public  List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive){
+        System.out.println("First query:\n");
         List<Integer> result1 = simpleQueryExecutor(query1);
+
+        System.out.println("Second query:\n");
         List<Integer> result2 = simpleQueryExecutor(query2);
+
         List<Integer> finalResult = new LinkedList<>();
         Iterator<Integer> it1 = result1.iterator();
         if(isDisjunctive){

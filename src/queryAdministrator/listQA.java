@@ -56,19 +56,19 @@ public class listQA extends QueryAdministrator {
                     case "String":
                         row.add(lineArray[i]);
                         break;
-                    case "Integer":
+                    case "int":
                         Integer intNumber = Integer.parseInt(lineArray[i]);
                         row.add(intNumber);
                         break;
-                    case "Double":
+                    case "double":
                         Double doubleNumber = Double.parseDouble(lineArray[i]);
                         row.add(doubleNumber);
                         break;
-                    case "Date":
+                    case "date":
                         Date date = dateFormat.parse(lineArray[i]);
                         row.add(date);
                         break;
-                    case "Boolean":
+                    case "bool":
                         Boolean bool = Boolean.parseBoolean(lineArray[i]);
                         row.add(bool);
                         break;
