@@ -12,4 +12,10 @@ public class EqualityIndex implements Index {
     public List<Integer> getObjects(String string){
         return null;
     }
+
+    @Override
+    public void addObject(Object o, Integer row) {
+
+    }
+
 }

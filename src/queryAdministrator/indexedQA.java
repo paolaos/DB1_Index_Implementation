@@ -1,9 +1,10 @@
 package queryAdministrator;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.List;
 
 import index.*;
@@ -14,24 +15,88 @@ import query.Query;
  */
 public class indexedQA extends QueryAdministrator {
     //Version eficiente
-    private Hashtable<Integer, String> data;
-    private Hashtable<Integer, Index> indexes;
+    private Hashtable<String, Index> indexes;
+    private Integer[] rowStart;
 
     public indexedQA(File file) {
+        this.file = file;
+        validFile = false;
+        createIndexes();
 
     }
 
-    public void createIndex(){
+    private void createIndexes(){
+        for (int i = 0; i < fields.length ; i++) {
+            String field = fields[i];
+            Index currentIndex;
+            switch (fieldsDataTypes[i]){
+                case "String":
+                    currentIndex = new EqualityIndex();
+                    break;
+                case "Boolean":
+                    currentIndex = new EqualityIndex();
+                    break;
+                default:
+                    currentIndex = new ComparableIndex();
+            }
+            indexes.put(field,currentIndex);
+        }
 
     }
 
-    public List<Integer> consultIndex(){
-        return null;
+    private String[] getRow(int rowNumber) throws IOException {
+        int offset = rowStart[rowNumber];
+        int length = rowStart[rowNumber+1] - offset;
+        byte[] line = new byte[length];
+        FileInputStream fi = new FileInputStream(file);
+        fi.skip(offset);
+        fi.read(line,0,length);
+        String lineAsString = "";
+        for (int i = 0; i <length ; i++) {
+            lineAsString += (char) line[i];
+        }
+        return lineAsString.split(",");
     }
 
     @Override
     public void storeData() throws IOException, ParseException {
+        assert(validFile);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        int position = br.readLine().length() + br.readLine().length() + 2;
+        String line;
+        LinkedList<Integer> rowStart = new LinkedList<>();
+        while((line = br.readLine()) != null){
+            rowStart.add(position);
 
+            String[] lineArray = line.split(",");
+            for (int i = 0; i < columns ; i++) {
+                Index index = indexes.get(fields[i]);
+                switch (fieldsDataTypes[i]){
+                    case "String":
+                        index.addObject(lineArray[i],rows);
+                        break;
+                    case "Integer":
+                        Integer intNumber = Integer.parseInt(lineArray[i]);
+                        index.addObject(intNumber,rows);
+                        break;
+                    case "Double":
+                        Double doubleNumber = Double.parseDouble(lineArray[i]);
+                        index.addObject(doubleNumber,rows);
+                        break;
+                    case "Date":
+                        Date date = dateFormat.parse(lineArray[i]);
+                        index.addObject(date,rows);
+                        break;
+                    case "Boolean":
+                        index.addObject(lineArray[i],rows);
+                        break;
+                }
+            }
+            position += line.length()+1;
+            rows++;
+        }
+        rowStart.add(position);
+        this.rowStart = (Integer[]) rowStart.toArray();
     }
 
     @Override
@@ -55,4 +120,7 @@ public class indexedQA extends QueryAdministrator {
     }
 
 
+
 }
+
+

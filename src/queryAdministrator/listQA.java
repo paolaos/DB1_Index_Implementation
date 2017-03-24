@@ -38,7 +38,7 @@ public class listQA extends QueryAdministrator {
             }
         }
 
-        return null;
+        return resultDisplay;
     }
 
     public void storeData() throws IOException, ParseException {

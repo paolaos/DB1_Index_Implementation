@@ -7,6 +7,7 @@ import java.util.List;
  */
 public interface Index {
     //TODO hablar sobre por qué recibiría un String.
-   // public List<Integer> getObjects(String string);
+   public List<Integer> getObjects(String string);
+   public void addObject(Object o,Integer row);
 
 }

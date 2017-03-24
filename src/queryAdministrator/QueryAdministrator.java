@@ -18,7 +18,7 @@ public abstract class QueryAdministrator<T>{
     protected int rows;
     protected int columns;
     protected boolean validFile;
-    private String[] fields;
+    protected String[] fields;
     protected String[] fieldsDataTypes;
     protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
 
