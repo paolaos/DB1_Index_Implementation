@@ -9,7 +9,10 @@ import java.util.List;
 public class EqualityIndex implements Index {
     Hashtable<String, List<Integer>> table;
 
-    public List<Integer> getObjects(String string){
+
+
+    @Override
+    public List<Integer> getObjects() {
         return null;
     }
 

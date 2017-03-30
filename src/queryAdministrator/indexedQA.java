@@ -31,8 +31,6 @@ public class indexedQA extends QueryAdministrator {
             Index currentIndex;
             switch (fieldsDataTypes[i]){
                 case "String":
-                    currentIndex = new EqualityIndex();
-                    break;
                 case "Boolean":
                     currentIndex = new EqualityIndex();
                     break;
@@ -101,7 +99,10 @@ public class indexedQA extends QueryAdministrator {
 
     @Override
     public List<Integer> simpleEqualityQueryExecutor(Query query) {
-        return null;
+        List<Integer> result;
+        Index index = indexes.get(query.getField());
+        return index.getObjects();
+
     }
 
     @Override
