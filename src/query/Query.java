@@ -18,7 +18,7 @@ public class Query<T extends Comparable> {
     }
 
     //Constructor for Comparable Range.
-    public Query(QueryType type,String field, T value1, T value2, int inequality ){
+    public Query(QueryType type,String field, T value1, T value2){
         queryType = type;
         this.value1 = value1;
         this.value2 = value2;
