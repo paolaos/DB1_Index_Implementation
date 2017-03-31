@@ -99,9 +99,8 @@ public class indexedQA extends QueryAdministrator {
 
     @Override
     public List<Integer> simpleEqualityQueryExecutor(Query query) {
-        List<Integer> result;
         Index index = indexes.get(query.getField());
-        return index.getObjects();
+        return index.getObjects(query);
 
     }
 

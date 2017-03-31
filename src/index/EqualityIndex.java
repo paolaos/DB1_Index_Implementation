@@ -2,6 +2,7 @@ package index;
 
 import java.util.Hashtable;
 import java.util.List;
+import query.*;
 
 /**
  * Created by Paola Ortega S on 3/16/2017.
@@ -12,7 +13,7 @@ public class EqualityIndex implements Index {
 
 
     @Override
-    public List<Integer> getObjects() {
+    public List<Integer> getObjects(Query query) {
         return null;
     }
 
