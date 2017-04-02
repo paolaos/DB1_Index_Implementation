@@ -110,31 +110,9 @@ public class listQA extends QueryAdministrator {
 
     }
 
-    public String resultBuilder(int[] specifiedColumns, List results) {
-        String resultDisplay = "These are the matching results to your query: \n";
-        if(results.size() == 0) resultDisplay += "No results match your query. \n";
-        else{
-            for (int i = 0; i < specifiedColumns.length; i++) {
-                int column = specifiedColumns[i];
-                resultDisplay += fields[column] + "\t\t";
-            }
-            resultDisplay += "\n";
-            Iterator<Integer> it = results.iterator();
-            while (it.hasNext()){
-                LinkedList row = data.get(it.next());
-                for (int i = 0; i <specifiedColumns.length ; i++) {
-                    Object result = row.get(specifiedColumns[i]);
-                    if(result instanceof Date) resultDisplay += dateFormat.format((Date)result)+ "\t\t";
-                    else {
-                        resultDisplay += result + "\t\t";
-                    }
-                }
-                resultDisplay += "\n";
-            }
-        }
+    public Object[] getRow(int rowNumber){return data.get(rowNumber).toArray();}
 
-        return resultDisplay;
-    }
+
 
 
 

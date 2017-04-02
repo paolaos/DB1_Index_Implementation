@@ -108,8 +108,34 @@ public abstract class QueryAdministrator<T>{
         return fields;
     }
 
+    public String resultBuilder(int[] specifiedColumns, List results) throws IOException {
+        String resultDisplay = "These are the matching results to your query: \n";
+        if(results.size() == 0) resultDisplay += "No results match your query. \n";
+        else{
+            for (int i = 0; i < specifiedColumns.length; i++) {
+                int column = specifiedColumns[i];
+                resultDisplay += fields[column] + "\t\t";
+            }
+            resultDisplay += "\n";
+            Iterator<Integer> it = results.iterator();
+            while (it.hasNext()){
+                Object[] row = getRow(it.next());
+                for (int i = 0; i <specifiedColumns.length ; i++) {
+                    //Object result = row.get(specifiedColumns[i]);
+                    Object result = row[specifiedColumns[i]];
+                    if(result instanceof Date) resultDisplay += dateFormat.format((Date)result)+ "\t\t";
+                    else {
+                        resultDisplay += result + "\t\t";
+                    }
+                }
+                resultDisplay += "\n";
+            }
+        }
 
-    public abstract String resultBuilder(int[] specifiedColumns, List<Integer> results);
+        return resultDisplay;
+    }
+
+    protected abstract Object[] getRow(int next) throws IOException;
 
     public abstract void storeData() throws IOException, ParseException;
 

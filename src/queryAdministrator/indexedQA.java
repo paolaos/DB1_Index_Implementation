@@ -43,7 +43,8 @@ public class indexedQA extends QueryAdministrator {
 
     }
 
-    private String[] getRow(int rowNumber) throws IOException {
+    @Override
+    protected Object[] getRow(int rowNumber) throws IOException {
         int offset = rowStart[rowNumber];
         int length = rowStart[rowNumber+1] - offset;
         byte[] line = new byte[length];
@@ -102,23 +103,14 @@ public class indexedQA extends QueryAdministrator {
     public List<Integer> simpleEqualityQueryExecutor(Query query) {
         Index index = indexes.get(query.getField());
         return index.getObjects(query);
-
     }
 
     @Override
     public List<Integer> simpleRangeQueryExecutor(Query query) {
-        return null;
+        Index index = indexes.get(query.getField());
+        return index.getObjects(query);
     }
 
-    @Override
-    public List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive) {
-        return null;
-    }
-
-    @Override
-    public String resultBuilder(int[] specifiedColumns, List results) {
-        return null;
-    }
 
 
 }

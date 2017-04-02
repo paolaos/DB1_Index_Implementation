@@ -5,6 +5,7 @@ import queryAdministrator.QueryAdministrator;
 import queryAdministrator.listQA;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +22,7 @@ public class UI {
     private Scanner reader;
     private boolean exit = false;
     private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    public UI(){
+    public UI() throws IOException {
         reader = new Scanner(System.in);
         System.out.println("Type complete file path to the .csv archive");
         String filePath = reader.next();
@@ -73,7 +74,7 @@ public class UI {
 
     }
 
-    private String simpleQuery(){
+    private String simpleQuery() throws IOException {
         Query query1 = queryInput();
 
         List<Integer> resultantList = queryAdministrator.simpleQueryExecutor(query1);
@@ -113,7 +114,7 @@ public class UI {
         return finalArray;
     }
 
-    private String complexQuery(){
+    private String complexQuery() throws IOException {
         Query query1 = queryInput();
         Query query2 = queryInput();
         List<Integer> finalList = null;
