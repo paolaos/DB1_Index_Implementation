@@ -36,7 +36,7 @@ public class indexedQA extends QueryAdministrator {
             Index currentIndex;
             switch (fieldsDataTypes[i]){
                 case "String":
-                case "Boolean":
+                case "bool":
                     currentIndex = new EqualityIndex();
                     break;
                 default:

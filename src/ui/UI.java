@@ -21,48 +21,63 @@ import java.util.Scanner;
 public class UI {
     private QueryAdministrator queryAdministrator;
     private Scanner reader;
-    private boolean exit = false;
     private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     public UI() throws IOException {
+        boolean exit = false;
+        boolean validatedAnswer = false;
         reader = new Scanner(System.in);
         System.out.println("Type complete file path to the .csv archive");
         String filePath = reader.next();
         File file = new File(filePath);
         while(!isValid(file)){
-            System.out.println("There was an error recognizing the path. Please try again. ");
+            System.out.println("There was an error recognizing the path. Please try again. \n");
             filePath = reader.next();
             file = new File(filePath);
         }
 
-        System.out.println("Type 1 if you'd like to use our inefficient version, or 2 for our efficient version. ");
-        int number = reader.nextInt();
-        if(number == 1)
-            queryAdministrator = new listQA(file);
-        else
-            queryAdministrator = new indexedQA(file);
+        while(!validatedAnswer){
+            System.out.println("Type 1 if you'd like to use our inefficient version, or 2 for our efficient version. ");
+            int number = reader.nextInt();
+            if(number == 1){
+                queryAdministrator = new listQA(file);
+                validatedAnswer = true;
+            } else if(number ==2){
+                queryAdministrator = new indexedQA(file);
+                validatedAnswer = true;
+            } else {
+                System.out.println("Invalid input. Please try again. ");
+            }
+        }
 
         while(!exit) {
-            System.out.println("Please type 1 if you want a simple query or 2 if you want a complex query. ");
-            int query = reader.nextInt();
-            String queryResult;
-            if (query == 1) {
-                System.out.println("Simple query:\n");
-                queryResult = simpleQuery();
-            } else {
-                System.out.println("Complex query:\n");
-                queryResult = complexQuery();
+            validatedAnswer = false;
+            String resultantQuery = "";
+            while(!validatedAnswer){
+                System.out.println("Please type 1 if you want a simple query or 2 if you want a complex query. ");
+                int query = reader.nextInt();
+                if (query == 1) {
+                    System.out.println("Simple query:\n");
+                    resultantQuery = this.simpleQuery();
+                    validatedAnswer = true;
+                } else if(query == 2) {
+                    System.out.println("Complex query:\n");
+                    resultantQuery = this.complexQuery();
+                    validatedAnswer = true;
+                } else
+                    System.out.println("Not a valid input. Please try again. \n");
             }
-            System.out.println(queryResult);
 
-            boolean correctAnswer = false;
-            while(!correctAnswer) {
+            System.out.println(resultantQuery)
+            ;
+            validatedAnswer = false;
+            while(!validatedAnswer) {
                 System.out.println("Would you like to make another query? [y/n]");
                 String answer = reader.next();
                 if (answer.equals("n")) {
                     exit = true;
-                    correctAnswer = true;
+                    validatedAnswer = true;
                 } else if(answer.equals("y"))
-                    correctAnswer = true;
+                    validatedAnswer = true;
 
                 else
                     System.out.println("Invalid input. Please try again.");

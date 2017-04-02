@@ -76,7 +76,7 @@ public class Query {
                 result += value1;
                 break;
             case INEQUALITY:
-                result += "values  not equal to: ";
+                result += "values not equal to: ";
                 result += value1;
                 break;
 
