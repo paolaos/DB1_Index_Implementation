@@ -19,7 +19,14 @@ public class indexedQA extends QueryAdministrator {
         this.file = file;
         validFile = false;
         indexes = new Hashtable<>();
-
+        try{
+            this.validateDataTypes();
+            this.storeData();
+        } catch(IOException e){
+            e.fillInStackTrace();
+        } catch (ParseException e){
+            e.getErrorOffset();
+        }
 
     }
 

@@ -2,6 +2,7 @@ package ui;
 
 import query.*;
 import queryAdministrator.QueryAdministrator;
+import queryAdministrator.indexedQA;
 import queryAdministrator.listQA;
 
 import java.io.File;
@@ -32,7 +33,13 @@ public class UI {
             filePath = reader.next();
             file = new File(filePath);
         }
-        queryAdministrator = new listQA(file);
+
+        System.out.println("Type 1 if you'd like to use our inefficient version, or 2 for our efficient version. ");
+        int number = reader.nextInt();
+        if(number == 1)
+            queryAdministrator = new listQA(file);
+        else
+            queryAdministrator = new indexedQA(file);
 
         while(!exit) {
             System.out.println("Please type 1 if you want a simple query or 2 if you want a complex query. ");
