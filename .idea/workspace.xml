@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c38a3f0-086a-4a91-950e-d57e8e5bf31e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tests/indexedQATest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java" afterPath="$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/queryAdministrator/indexedQA.java" afterPath="$PROJECT_DIR$/src/queryAdministrator/indexedQA.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/ListQATest.java" afterPath="$PROJECT_DIR$/src/tests/ListQATest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/UITest.java" afterPath="$PROJECT_DIR$/src/tests/UITest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/indexedQATest.java" afterPath="$PROJECT_DIR$/src/tests/indexedQATest.java" />
     </list>
     <ignored path="TP1_Bases1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,9 +29,11 @@
       <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
-              <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-              <folding />
+            <state relative-caret-position="1645">
+              <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,13 +41,11 @@
       <file leaf-file-name="QueryAdministrator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="136" column="49" lean-forward="false" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
+            <state relative-caret-position="455">
+              <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding>
                 <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
                 <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-                <element signature="e#3828#3829#0" expanded="true" />
-                <element signature="e#3857#3858#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,7 +54,7 @@
       <file leaf-file-name="ComparableIndex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index/ComparableIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
+            <state relative-caret-position="1225">
               <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="e#236#237#0" expanded="true" />
@@ -66,14 +64,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexedQA.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="indexedQA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/queryAdministrator/indexedQA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1855">
-              <caret line="58" column="63" lean-forward="false" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
+            <state relative-caret-position="1680">
+              <caret line="53" column="39" lean-forward="true" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
               <folding>
-                <element signature="method#storeData#0;class#indexedQA#0" expanded="false" />
-                <element signature="e#1819#1828#0" expanded="true" />
+                <marker date="1491121179044" expanded="false" signature="2045:2054" ph="&lt;~&gt;" />
               </folding>
             </state>
           </provider>
@@ -82,7 +79,7 @@
       <file leaf-file-name="EqualityIndex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index/EqualityIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
+            <state relative-caret-position="1260">
               <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
@@ -92,10 +89,14 @@
       <file leaf-file-name="listQA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/queryAdministrator/listQA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1345">
-              <caret line="112" column="80" lean-forward="true" selection-start-line="112" selection-start-column="80" selection-end-line="112" selection-end-column="80" />
+            <state relative-caret-position="3710">
+              <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1491121176138" expanded="true" signature="759:2280" ph="{...}" />
+                <marker date="1491121176138" expanded="true" signature="2012:2105" ph="//..." />
+                <marker date="1491121176138" expanded="true" signature="2347:3055" ph="{...}" />
+                <marker date="1491121176138" expanded="true" signature="3134:3677" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -104,8 +105,8 @@
       <file leaf-file-name="UITest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/UITest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+            <state relative-caret-position="350">
+              <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,7 +117,7 @@
       <file leaf-file-name="Query.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/query/Query.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
+            <state relative-caret-position="1365">
               <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -133,8 +134,8 @@
       <file leaf-file-name="ListQATest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tests/ListQATest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="980">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="1085">
+              <caret line="40" column="62" lean-forward="false" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexedQATest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="indexedQATest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tests/indexedQATest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1645">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="64">
+              <caret line="40" column="62" lean-forward="false" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,10 +198,10 @@
         <option value="$PROJECT_DIR$/src/queryAdministrator/listQA.java" />
         <option value="$PROJECT_DIR$/src/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/tests/UITest.java" />
-        <option value="$PROJECT_DIR$/src/tests/ListQATest.java" />
         <option value="$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java" />
         <option value="$PROJECT_DIR$/src/queryAdministrator/indexedQA.java" />
         <option value="$PROJECT_DIR$/src/tests/indexedQATest.java" />
+        <option value="$PROJECT_DIR$/src/tests/ListQATest.java" />
       </list>
     </option>
   </component>
@@ -381,8 +382,12 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gitignore.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/index/EqualityIndex.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/queryAdministrator/indexedQA.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/queryAdministrator/listQA.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/stats.csv</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/UITest.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ui/UI.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -390,7 +395,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/UITest.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -949,7 +953,8 @@
       <workItem from="1490286450607" duration="15540000" />
       <workItem from="1490825488764" duration="6441000" />
       <workItem from="1491088724893" duration="1100000" />
-      <workItem from="1491089939127" duration="23838000" />
+      <workItem from="1491089939127" duration="24726000" />
+      <workItem from="1491119867640" duration="1929000" />
     </task>
     <task id="LOCAL-00001" summary="Implementacion parcial de UI.&#10;Nueva Clase Query&#10;Muchos TODO's">
       <created>1489991384516</created>
@@ -1063,11 +1068,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491113050869</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Implementacion de IndexedQATest&#10;">
+      <created>1491116882181</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1491116882181</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63761000" />
+    <option name="totallyTimeSpent" value="66578000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="3724" height="2188" extended-state="6" />
@@ -1083,7 +1095,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33010203" sideWeight="0.5009467" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26530612" sideWeight="0.4990533" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27959183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43571427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1127,7 +1139,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26530612" sideWeight="0.4990533" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27959183" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43571427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36225596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1161,11 +1173,20 @@
     <MESSAGE value="Implementacion parcial de casos de prueba para listQA" />
     <MESSAGE value="Implementacion  casos de prueba para listQA en nueva clase ListQATest&#10;" />
     <MESSAGE value="Implementacion completa de IndexedQA&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementacion completa de IndexedQA&#10;" />
+    <MESSAGE value="Implementacion de IndexedQATest&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacion de IndexedQATest&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java</url>
+          <line>110</line>
+          <properties class="queryAdministrator.QueryAdministrator" method="resultBuilder" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1181,8 +1202,6 @@
           <folding>
             <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
             <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1192,7 +1211,8 @@
         <state relative-caret-position="455">
           <caret line="15" column="50" lean-forward="true" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1202,8 +1222,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3462#3463#0" expanded="true" />
-            <element signature="e#3561#3562#0" expanded="true" />
+            <marker date="1491121179044" expanded="false" signature="2045:2054" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1214,6 +1233,10 @@
           <caret line="43" column="63" lean-forward="false" selection-start-line="43" selection-start-column="63" selection-end-line="43" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1491121176138" expanded="true" signature="759:2280" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="2012:2105" ph="//..." />
+            <marker date="1491121176138" expanded="true" signature="2347:3055" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="3134:3677" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1222,10 +1245,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#278#279#0" expanded="false" />
-            <element signature="e#772#773#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1253,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1249,7 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1257,7 +1283,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4900">
           <caret line="140" column="42" lean-forward="true" selection-start-line="140" selection-start-column="42" selection-end-line="140" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1276,8 +1304,6 @@
           <folding>
             <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
             <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1287,7 +1313,8 @@
         <state relative-caret-position="840">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1297,8 +1324,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3462#3463#0" expanded="true" />
-            <element signature="e#3561#3562#0" expanded="true" />
+            <marker date="1491121179044" expanded="false" signature="2045:2054" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
@@ -1309,6 +1335,10 @@
           <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1491121176138" expanded="true" signature="759:2280" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="2012:2105" ph="//..." />
+            <marker date="1491121176138" expanded="true" signature="2347:3055" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="3134:3677" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1317,10 +1347,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#278#279#0" expanded="false" />
-            <element signature="e#772#773#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1328,7 +1355,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1344,7 +1378,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1352,7 +1385,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2555">
           <caret line="75" column="26" lean-forward="true" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1363,8 +1398,6 @@
           <folding>
             <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
             <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1373,10 +1406,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#278#279#0" expanded="false" />
-            <element signature="e#772#773#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1384,7 +1414,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1540">
           <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1392,7 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1400,7 +1436,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1411,8 +1449,6 @@
           <folding>
             <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
             <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1421,7 +1457,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1429,7 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1437,7 +1479,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1448,8 +1492,6 @@
           <folding>
             <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
             <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1458,7 +1500,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1466,9 +1515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <element signature="e#2896#2897#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1476,11 +1522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="1027" column="0" lean-forward="false" selection-start-line="1027" selection-start-column="0" selection-end-line="1027" selection-end-column="0" />
-          <folding>
-            <element signature="e#48531#48532#0" expanded="false" />
-            <element signature="e#76422#76423#0" expanded="false" />
-            <element signature="e#76461#76462#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1515,9 +1556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="819">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#1106#1107#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1525,9 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="e#1628#1629#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1535,9 +1570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding>
-            <element signature="e#1693#1694#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1545,7 +1577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1553,7 +1584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
           <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1561,22 +1591,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="1645">
+          <caret line="49" column="41" lean-forward="false" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/UITest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        <state relative-caret-position="350">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1585,7 +1616,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index/EqualityIndex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
+        <state relative-caret-position="1260">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
@@ -1593,7 +1624,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/query/Query.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
+        <state relative-caret-position="1365">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1608,7 +1639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index/ComparableIndex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
+        <state relative-caret-position="1225">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#236#237#0" expanded="true" />
@@ -1617,33 +1648,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java">
+    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/listQA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="136" column="49" lean-forward="false" selection-start-line="136" selection-start-column="49" selection-end-line="136" selection-end-column="49" />
+        <state relative-caret-position="3710">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
-            <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
-            <element signature="e#3828#3829#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1491121176138" expanded="true" signature="759:2280" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="2012:2105" ph="//..." />
+            <marker date="1491121176138" expanded="true" signature="2347:3055" ph="{...}" />
+            <marker date="1491121176138" expanded="true" signature="3134:3677" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/listQA.java">
+    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/QueryAdministrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1345">
-          <caret line="112" column="80" lean-forward="true" selection-start-line="112" selection-start-column="80" selection-end-line="112" selection-end-column="80" />
+        <state relative-caret-position="455">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#validateDataTypes#0;class#QueryAdministrator#0" expanded="false" />
+            <element signature="method#getFieldDataType#0;class#QueryAdministrator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/indexedQA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="53" column="39" lean-forward="true" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+          <folding>
+            <marker date="1491121179044" expanded="false" signature="2045:2054" ph="&lt;~&gt;" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/ListQATest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="1085">
+          <caret line="40" column="62" lean-forward="false" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1652,21 +1695,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/indexedQATest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1645">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="64">
+          <caret line="40" column="62" lean-forward="false" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/queryAdministrator/indexedQA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1855">
-          <caret line="58" column="63" lean-forward="false" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
-          <folding>
-            <element signature="method#storeData#0;class#indexedQA#0" expanded="false" />
-            <element signature="e#1819#1828#0" expanded="true" />
           </folding>
         </state>
       </provider>

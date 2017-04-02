@@ -23,23 +23,21 @@ public class ListQATest {
         assert(file.exists());
         QueryAdministrator queryAdministrator = new listQA(file);
 
-        System.out.println("\nValidating data types...");
-        queryAdministrator.validateDataTypes();
 
         System.out.println("\nThese are the file fields: ");
         String[] fileFields = queryAdministrator.getFields();
         for (int i = 0; i < fileFields.length ; i++) {
             System.out.print(fileFields[i]+ " ");
         }
-        System.out.println("\n\nStoring data...");
-        queryAdministrator.storeData();
+
+
 
 
         System.out.println("\nTesting some queries...");
         //Sirven
         Query q1 = new Query(QueryType.EQUALITY,"Height",66);
         Query q2 = new Query(QueryType.RANGE,"Weight",100.0,150.0);
-        Query q3 = new Query(QueryType.INEQUALITY,"Male","TRUE");
+        Query q3 = new Query(QueryType.INEQUALITY,"Male","True");
         Query q4 = new Query(QueryType.EQUALITY,"Name","Neil");
         Query q5 = new Query(QueryType.EQUALITY,"Birth", dateFormat.parse("26/02/2006"));
         Query q6 = new Query(QueryType.RANGE,"Birth", dateFormat.parse("01/01/2000"),dateFormat.parse("01/01/2010"));

@@ -50,7 +50,7 @@ public class indexedQA extends QueryAdministrator {
     @Override
     public Object[] getRow(int rowNumber) throws IOException {
         int offset = rowStart[rowNumber];
-        int length = rowStart[rowNumber+1] - offset;
+        int length = rowStart[rowNumber+1] - offset-2;
         byte[] line = new byte[length];
         FileInputStream fi = new FileInputStream(file);
         fi.skip(offset);
@@ -67,7 +67,7 @@ public class indexedQA extends QueryAdministrator {
         createIndexes();
         assert(validFile);
         BufferedReader br = new BufferedReader(new FileReader(file));
-        int position = br.readLine().length() + br.readLine().length() + 2;
+        int position = br.readLine().length() + br.readLine().length() + 4;
         String line;
         List<Integer> rowStart = new ArrayList<Integer>();
         while((line = br.readLine()) != null){
