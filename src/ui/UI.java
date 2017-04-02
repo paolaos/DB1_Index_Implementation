@@ -88,18 +88,18 @@ public class UI {
         int[] finalArray = null;
         while(!solved) {
             System.out.println("Please use the format \"number,number,...\" to specify which columns you'd like to have displayed. The options go as follows: ");
-            for (int i = 1; i < queryAdministrator.getFields().length; i++)
-                System.out.println("\tType " + i + "to display by " + queryAdministrator.getFields()[i]); //TODO ver si esta bien el i del # con el de getFields.
+            for (int i = 0; i < queryAdministrator.getFields().length; i++)
+                System.out.println("\tType " + (i + 1) + " to display by " + queryAdministrator.getFields()[i]); //TODO ver si esta bien el i del # con el de getFields.
 
             String columns = reader.next();
             String[] stringArray = columns.split(",");
             finalArray = new int[stringArray.length];
             if (stringArray.length <= queryAdministrator.getFields().length) {
                 for (int i = 0; i < stringArray.length; i++) {
-                    if (stringArray[i].matches("[0,9]+")) {
+                    if (stringArray[i].matches("[0-9]+")) {
                         int temp = Integer.parseInt(stringArray[i]);
-                        if(temp <= stringArray.length){
-                            finalArray[i] = temp;
+                        if(temp - 1 <= queryAdministrator.getRows()){
+                            finalArray[i] = (temp - 1);
                         }
                     } else
                         throw new ArrayIndexOutOfBoundsException("Fatal error: one of the inputs doesn't match the format ");
@@ -115,7 +115,9 @@ public class UI {
     }
 
     private String complexQuery() throws IOException {
+        System.out.println("First query: ");
         Query query1 = queryInput();
+        System.out.println("\nSecond query: ");
         Query query2 = queryInput();
         List<Integer> finalList = null;
         boolean validated = false;
@@ -143,13 +145,14 @@ public class UI {
         boolean isSolved = false;
         Query query = null;
         while(!isSolved) {
-            System.out.println("Type 1 if you want to base your search on a specific number, or 2 if you want to search through a range of values.");
+            System.out.println("Type 1 if you want to make your search based on a specific value, or 2 if you want to search through a range of values.");
             int typeInput = reader.nextInt();
             //SPECIFIC NUMBER/ EQUALITY OR INEQUALITY:
             if (typeInput == 1) {
                 System.out.println("Type the field you want to ask for: ");
-                String type = reader.next();
-                queryAdministrator.getFieldDataType(type);
+                System.out.println(queryAdministrator.showFields());
+                String field = reader.next();
+                String type = queryAdministrator.getFieldDataType(field);
                 switch (type) {
                     case "int":
                         //USER DEFINES THE TYPE OF SPECIFIC SEARCH
@@ -158,10 +161,10 @@ public class UI {
                         System.out.println("Please type the specific number. ");
                         int tempInt = reader.nextInt();
                         if(equality == 1){
-                            query = new Query(QueryType.EQUALITY,type, tempInt);
+                            query = new Query(QueryType.EQUALITY,field, tempInt);
                             isSolved = true;
                         } else if(equality == 2){
-                            query = new Query(QueryType.INEQUALITY,type, tempInt);
+                            query = new Query(QueryType.INEQUALITY,field, tempInt);
                             isSolved = true;
                         } else
                             System.out.println("Invalid input. Please try again. ");
@@ -175,10 +178,10 @@ public class UI {
                         System.out.println("Please type the specific number. ");
                         double tempDouble = reader.nextDouble();
                         if(equality == 1){
-                            query = new Query(QueryType.EQUALITY,type, tempDouble);
+                            query = new Query(QueryType.EQUALITY,field, tempDouble);
                             isSolved = true;
                         } else if(equality == 2){
-                            query = new Query(QueryType.INEQUALITY,type, tempDouble);
+                            query = new Query(QueryType.INEQUALITY,field, tempDouble);
                             isSolved = true;
                         } else
                             System.out.println("Invalid input. Please try again. ");
@@ -188,7 +191,7 @@ public class UI {
                     case "date":
                         System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
                         equality = reader.nextInt();
-                        System.out.println("Please type the specific date. ");
+                        System.out.println("Please type the specific date (Format: dd/MM/yyyy) ");
                         String date = reader.next();
                         Date tempDate = null;
                         //SYSTEM VALIDES IF THE FORMAT IS CORRECT.
@@ -198,10 +201,10 @@ public class UI {
                             exception.printStackTrace();
                         }
                         if(equality == 1){
-                            query = new Query(QueryType.EQUALITY,type, tempDate);
+                            query = new Query(QueryType.EQUALITY,field, tempDate);
                             isSolved = true;
                         } else if(equality == 2){
-                            query = new Query(QueryType.INEQUALITY,type, tempDate);
+                            query = new Query(QueryType.INEQUALITY,field, tempDate);
                             isSolved = true;
                         } else
                             System.out.println("Invalid input. Please try again. ");
@@ -214,10 +217,10 @@ public class UI {
                         System.out.println("Please type what you're looking for. ");
                         String tempString = reader.next();
                         if(equality == 1){
-                            query = new Query(QueryType.EQUALITY, type, tempString);
+                            query = new Query(QueryType.EQUALITY, field, tempString);
                             isSolved = true;
                         } else if(equality == 2){
-                            query = new Query(QueryType.INEQUALITY, type, tempString);
+                            query = new Query(QueryType.INEQUALITY, field, tempString);
                             isSolved = true;
                         } else
                             System.out.println("Invalid input. Please try again. ");
@@ -227,15 +230,15 @@ public class UI {
                     case "bool":
                         System.out.println("Type 1 if you'd like to do an equality search (==), or 2 if you'd like to do an inequality search (!=) ");
                         equality = reader.nextInt();
-                        System.out.println("Please type \"true\" or \"false\". ");
+                        System.out.println("Please type \"True\" or \"False\". ");
                         String tempBool = reader.next();
                         if(tempBool.equals("True") || tempBool.equals("False")) {
                             if(equality == 1){
-                                query = new Query(QueryType.EQUALITY, type, tempBool);
+                                query = new Query(QueryType.EQUALITY, field, tempBool);
                                 isSolved = true;
                             }
                             else if(equality == 2){
-                                query = new Query(QueryType.INEQUALITY, type, tempBool);
+                                query = new Query(QueryType.INEQUALITY, field, tempBool);
                                 isSolved = true;
                             }
                             else
@@ -248,11 +251,12 @@ public class UI {
                 //RANGE OF VALUES.
             } else if (typeInput == 2) {
                 System.out.println("Type the field you want to ask for: ");
-                String type = reader.next();
-                queryAdministrator.getFieldDataType(type);
+                System.out.println(queryAdministrator.showFields());
+                String field = reader.next();
+                String type = queryAdministrator.getFieldDataType(field);
                 switch (type) {
                     case "int":
-                        System.out.println("Would you like your range to be defined by 2 numbers or by 1 number? Please type the quantity. ");
+                        System.out.println("Would you like your range to be defined by 1 or 2 numbers? Please type the quantity. ");
                         int quantity = reader.nextInt();
                         //RANGE DEFINED BY 1 NUMBER
                         if(quantity == 1){
@@ -266,16 +270,16 @@ public class UI {
                                 int tempInt = reader.nextInt();
                                 switch (inequality){
                                     case(1):
-                                        query = new Query(QueryType.RANGE, type, tempInt + 1, Integer.MAX_VALUE);
+                                        query = new Query(QueryType.RANGE, field, tempInt + 1, Integer.MAX_VALUE);
                                         break;
                                     case(2):
-                                        query = new Query(QueryType.RANGE, type, tempInt, Integer.MAX_VALUE);
+                                        query = new Query(QueryType.RANGE, field, tempInt, Integer.MAX_VALUE);
                                         break;
                                     case(3):
-                                        query = new Query(QueryType.RANGE,type, Integer.MIN_VALUE, tempInt - 1);
+                                        query = new Query(QueryType.RANGE,field, Integer.MIN_VALUE, tempInt - 1);
                                         break;
                                     case(4):
-                                        query = new Query(QueryType.RANGE,type, Integer.MIN_VALUE, tempInt);
+                                        query = new Query(QueryType.RANGE,field, Integer.MIN_VALUE, tempInt);
                                         break;
 
                                 }
@@ -289,7 +293,7 @@ public class UI {
                             System.out.println("Please type the biggest value (y) for your range. ");
                             int maxInt = reader.nextInt();
                             if(minInt < maxInt) {
-                                query = new Query(QueryType.RANGE, type, minInt, maxInt); //no estoy segura de esto.
+                                query = new Query(QueryType.RANGE, field, minInt, maxInt); //no estoy segura de esto.
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
@@ -312,16 +316,16 @@ public class UI {
                                 double tempDouble = reader.nextDouble();
                                 switch (inequality){
                                     case(1):
-                                        query = new Query(QueryType.RANGE, type, tempDouble + 0.01, Double.MAX_VALUE);
+                                        query = new Query(QueryType.RANGE, field, tempDouble + 0.01, Double.MAX_VALUE);
                                         break;
                                     case(2):
-                                        query = new Query(QueryType.RANGE, type, tempDouble, Double.MAX_VALUE);
+                                        query = new Query(QueryType.RANGE, field, tempDouble, Double.MAX_VALUE);
                                         break;
                                     case(3):
-                                        query = new Query(QueryType.RANGE,type, Double.MIN_VALUE, tempDouble - 0.01);
+                                        query = new Query(QueryType.RANGE,field, Double.MIN_VALUE, tempDouble - 0.01);
                                         break;
                                     case(4):
-                                        query = new Query(QueryType.RANGE,type, Double.MIN_VALUE, tempDouble);
+                                        query = new Query(QueryType.RANGE,field, Double.MIN_VALUE, tempDouble);
                                         break;
 
                                 }
@@ -335,7 +339,7 @@ public class UI {
                             System.out.println("Please type the biggest value (y) for your range. ");
                             double maxDouble = reader.nextInt();
                             if(minDouble < maxDouble) {
-                                query = new Query(QueryType.RANGE, type, minDouble, maxDouble); //no estoy segura de esto.
+                                query = new Query(QueryType.RANGE, field, minDouble, maxDouble); //no estoy segura de esto.
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");
@@ -348,8 +352,8 @@ public class UI {
                         System.out.println("Would you like your range to be defined by 2 dates or by 1 date? Please type the quantity. ");
                         quantity = reader.nextInt();
                         if(quantity == 1){
-                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Greater than x" +
-                                    "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x");
+                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Younger than x" +
+                                    "\n\t2: Younger than or equal to x \n\t3: Older than x \n\t4: Older than or equal to x");
                             int inequality = reader.nextInt();
                             if(inequality <= 4 && inequality > 0){
                                 System.out.println("Now that you typed the inequality, please type the fixed date (dd/MM/yyyy) you want to search with");
@@ -362,16 +366,16 @@ public class UI {
                                 }
                                 switch (inequality){
                                     case(1):
-                                        query = new Query(QueryType.RANGE, type, this.changeDay(tempDate, 1), Double.MAX_VALUE);
+                                        query = new Query(QueryType.RANGE, field, this.changeDay(tempDate, 1), new Date(Long.MAX_VALUE));
                                         break;
                                     case(2):
-                                        query = new Query(QueryType.RANGE, type, tempDate, new Date());
+                                        query = new Query(QueryType.RANGE, field, tempDate, new Date());
                                         break;
                                     case(3):
-                                        query = new Query(QueryType.RANGE,type, new Date(Long.MIN_VALUE), this.changeDay(tempDate, -1)); //revisar
+                                        query = new Query(QueryType.RANGE,field, new Date(Long.MIN_VALUE), this.changeDay(tempDate, -1)); //revisar
                                         break;
                                     case(4):
-                                        query = new Query(QueryType.RANGE,type, Double.MIN_VALUE, tempDate);
+                                        query = new Query(QueryType.RANGE,field, new Date(Long.MIN_VALUE), tempDate);
                                         break;
 
                                 }
@@ -398,7 +402,7 @@ public class UI {
                                 exception.printStackTrace();
                             }
                             if(minDate.compareTo(maxDate) < 0) {
-                                query = new Query(QueryType.RANGE, type, minDate, maxDate);
+                                query = new Query(QueryType.RANGE, field, minDate, maxDate);
                                 isSolved = true;
                             } else
                                 System.out.println("The smallest date you entered is bigger or equal to the biggest date. Please try again.");

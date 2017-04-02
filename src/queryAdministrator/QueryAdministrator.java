@@ -142,6 +142,16 @@ public abstract class QueryAdministrator<T>{
 
     protected abstract List<Integer> simpleRangeQueryExecutor(Query query);
 
+    public String showFields(){
+        String result = "";
+        for(String field: fields)
+            result += field + ", ";
+        result = result.substring(0, result.length() - 2);
+        return result;
+    }
 
+    public int getRows() {
+        return rows;
+    }
 
 }

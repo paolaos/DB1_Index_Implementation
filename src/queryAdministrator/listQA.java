@@ -19,6 +19,15 @@ public class listQA extends QueryAdministrator {
         this.file = file;
         validFile = false;
         data = new LinkedList();
+        try{
+            this.validateDataTypes();
+            this.storeData();
+        } catch(IOException e){
+            e.fillInStackTrace();
+        } catch (ParseException e){
+            e.getErrorOffset();
+        }
+
     }
 
 
