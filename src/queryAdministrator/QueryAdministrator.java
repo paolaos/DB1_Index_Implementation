@@ -31,6 +31,7 @@ public abstract class QueryAdministrator<T>{
         try {
             reader = new BufferedReader(new FileReader(file));
             categories = reader.readLine();
+            categories = categories.replaceAll("\"","");
             types = reader.readLine();
 
         } catch(IOException exception) {
@@ -60,7 +61,7 @@ public abstract class QueryAdministrator<T>{
 
     public String getFieldDataType(String category){
         for(int i = 0; i < getFields().length; i++){
-            if(getFields()[i].equals(category))
+            if(fields[i].equals(category))
                 return fieldsDataTypes[i];
 
         }
@@ -111,9 +112,9 @@ public abstract class QueryAdministrator<T>{
 
     public abstract void storeData() throws IOException, ParseException;
 
-    public abstract List<Integer> simpleEqualityQueryExecutor(Query query);
+    protected abstract List<Integer> simpleEqualityQueryExecutor(Query query);
 
-    public abstract List<Integer> simpleRangeQueryExecutor(Query query);
+    protected abstract List<Integer> simpleRangeQueryExecutor(Query query);
 
 
 

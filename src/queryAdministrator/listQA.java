@@ -4,11 +4,9 @@ import query.Query;
 import query.QueryType;
 
 import java.io.*;
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Rodrigo on 3/23/2017.
@@ -24,22 +22,8 @@ public class listQA extends QueryAdministrator {
     }
 
 
-    @Override
-    public String resultBuilder(int[] specifiedColumns, List results) {
-        String resultDisplay = "These are the matching results to your query: \n";
-        for (int i = 0; i < specifiedColumns.length; i++) {
-            resultDisplay += fieldsDataTypes[specifiedColumns[i]] + "\t";
-        }
-        Iterator<Integer> it = results.iterator();
-        while (it.hasNext()){
-            LinkedList row = data.get(it.next());
-            for (int i = 0; i <specifiedColumns.length ; i++) {
-                resultDisplay += row.get(specifiedColumns[i]) + "\t";
-            }
-        }
 
-        return resultDisplay;
-    }
+
 
     public void storeData() throws IOException, ParseException {
         assert(validFile);
@@ -49,6 +33,7 @@ public class listQA extends QueryAdministrator {
 
         String currentLine;
         while((currentLine= reader.readLine()) != null){
+            currentLine = currentLine.replaceAll("\"", "");
             LinkedList<Comparable> row = new LinkedList();
             String[] lineArray = currentLine.split(",");
             for (int i = 0; i < columns ; i++) {
@@ -86,7 +71,7 @@ public class listQA extends QueryAdministrator {
         int column=0;
         String queryField = query.getField();
         for (int i = 0; i < columns ; i++) {
-            if(queryField.equals(getFields()[i])) column=i;
+            if(queryField.equals(fields[i])) column=i;
         }
         for (int i = 0; i < rows ; i++) {
             Comparable value = data.get(i).get(column);
@@ -118,6 +103,32 @@ public class listQA extends QueryAdministrator {
         }
         return result;
 
+    }
+
+    public String resultBuilder(int[] specifiedColumns, List results) {
+        String resultDisplay = "These are the matching results to your query: \n";
+        if(results.size() == 0) resultDisplay += "No results match your query. \n";
+        else{
+            for (int i = 0; i < specifiedColumns.length; i++) {
+                int column = specifiedColumns[i];
+                resultDisplay += fields[column] + "\t\t";
+            }
+            resultDisplay += "\n";
+            Iterator<Integer> it = results.iterator();
+            while (it.hasNext()){
+                LinkedList row = data.get(it.next());
+                for (int i = 0; i <specifiedColumns.length ; i++) {
+                    Object result = row.get(specifiedColumns[i]);
+                    if(result instanceof Date) resultDisplay += dateFormat.format((Date)result)+ "\t\t";
+                    else {
+                        resultDisplay += result + "\t\t";
+                    }
+                }
+                resultDisplay += "\n";
+            }
+        }
+
+        return resultDisplay;
     }
 
 

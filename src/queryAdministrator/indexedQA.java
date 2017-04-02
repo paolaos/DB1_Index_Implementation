@@ -21,6 +21,7 @@ public class indexedQA extends QueryAdministrator {
     public indexedQA(File file) {
         this.file = file;
         validFile = false;
+        indexes = new Hashtable<>();
         createIndexes();
 
     }
@@ -118,7 +119,6 @@ public class indexedQA extends QueryAdministrator {
     public String resultBuilder(int[] specifiedColumns, List results) {
         return null;
     }
-
 
 
 }
