@@ -2,10 +2,7 @@ package queryAdministrator;
 
 import java.io.*;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.Hashtable;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import index.*;
 import query.Query;
@@ -22,7 +19,7 @@ public class indexedQA extends QueryAdministrator {
         this.file = file;
         validFile = false;
         indexes = new Hashtable<>();
-        createIndexes();
+
 
     }
 
@@ -44,7 +41,7 @@ public class indexedQA extends QueryAdministrator {
     }
 
     @Override
-    protected Object[] getRow(int rowNumber) throws IOException {
+    public Object[] getRow(int rowNumber) throws IOException {
         int offset = rowStart[rowNumber];
         int length = rowStart[rowNumber+1] - offset;
         byte[] line = new byte[length];
@@ -60,11 +57,12 @@ public class indexedQA extends QueryAdministrator {
 
     @Override
     public void storeData() throws IOException, ParseException {
+        createIndexes();
         assert(validFile);
         BufferedReader br = new BufferedReader(new FileReader(file));
         int position = br.readLine().length() + br.readLine().length() + 2;
         String line;
-        LinkedList<Integer> rowStart = new LinkedList<>();
+        List<Integer> rowStart = new ArrayList<Integer>();
         while((line = br.readLine()) != null){
             rowStart.add(position);
 
@@ -92,11 +90,12 @@ public class indexedQA extends QueryAdministrator {
                         break;
                 }
             }
-            position += line.length()+1;
+            position += line.length()+2;
             rows++;
         }
         rowStart.add(position);
-        this.rowStart = (Integer[]) rowStart.toArray();
+        this.rowStart = new Integer[rowStart.size()];
+        this.rowStart = rowStart.toArray(this.rowStart);
     }
 
     @Override

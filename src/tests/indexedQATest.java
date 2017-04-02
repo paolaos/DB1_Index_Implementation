@@ -1,10 +1,11 @@
 package tests;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import query.Query;
 import query.QueryType;
 import queryAdministrator.QueryAdministrator;
+import queryAdministrator.indexedQA;
 import queryAdministrator.listQA;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -15,13 +16,13 @@ import java.util.List;
 /**
  * Created by Rodrigo on 4/1/2017.
  */
-public class ListQATest {
+public class indexedQATest {
     public static void main(String[] args) throws IOException, ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         int[] allColumns = {0,1,2,3,4};
         File file = new File("./src/stats.csv");
         assert(file.exists());
-        QueryAdministrator queryAdministrator = new listQA(file);
+        QueryAdministrator queryAdministrator = new indexedQA(file);
 
         System.out.println("\nValidating data types...");
         queryAdministrator.validateDataTypes();
@@ -43,7 +44,6 @@ public class ListQATest {
         Query q4 = new Query(QueryType.EQUALITY,"Name","Neil");
         Query q5 = new Query(QueryType.EQUALITY,"Birth", dateFormat.parse("26/02/2006"));
         Query q6 = new Query(QueryType.RANGE,"Birth", dateFormat.parse("01/01/2000"),dateFormat.parse("01/01/2010"));
-
 
 
         Query[] queries = {q1,q2,q3,q4,q5,q6};

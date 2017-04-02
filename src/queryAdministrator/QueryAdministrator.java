@@ -15,7 +15,7 @@ public abstract class QueryAdministrator<T>{
     protected List<LinkedList> data;
     protected UI ui;
     protected File file;
-    protected int rows;
+    public int rows;
     protected int columns;
     protected boolean validFile;
     protected String[] fields;
@@ -121,7 +121,6 @@ public abstract class QueryAdministrator<T>{
             while (it.hasNext()){
                 Object[] row = getRow(it.next());
                 for (int i = 0; i <specifiedColumns.length ; i++) {
-                    //Object result = row.get(specifiedColumns[i]);
                     Object result = row[specifiedColumns[i]];
                     if(result instanceof Date) resultDisplay += dateFormat.format((Date)result)+ "\t\t";
                     else {
@@ -135,7 +134,7 @@ public abstract class QueryAdministrator<T>{
         return resultDisplay;
     }
 
-    protected abstract Object[] getRow(int next) throws IOException;
+    public abstract Object[] getRow(int rowNumber) throws IOException;
 
     public abstract void storeData() throws IOException, ParseException;
 
