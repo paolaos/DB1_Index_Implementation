@@ -54,8 +54,9 @@ public class listQA extends QueryAdministrator {
                         row.add(date);
                         break;
                     case "bool":
-                        Boolean bool = Boolean.parseBoolean(lineArray[i]);
-                        row.add(bool);
+                        //Boolean bool = Boolean.parseBoolean(lineArray[i]);
+                        //row.add(bool);
+                        row.add(lineArray[i]);
                         break;
                 }
             }
@@ -71,15 +72,19 @@ public class listQA extends QueryAdministrator {
         int column=0;
         String queryField = query.getField();
         for (int i = 0; i < columns ; i++) {
-            if(queryField.equals(fields[i])) column=i;
+            if(queryField.equals(fields[i])) {column=i;break;}
         }
+
+        QueryType queryType = query.getQueryType();
+        Comparable queryValue = query.getValue1();
         for (int i = 0; i < rows ; i++) {
             Comparable value = data.get(i).get(column);
-            if(query.getQueryType() == QueryType.EQUALITY){
-                if(query.getValue1().compareTo(value)==0) result.add(i);
+
+            if(queryType == QueryType.EQUALITY){
+                if(queryValue.compareTo(value)==0) result.add(i);
             }
             else{
-                if(query.getValue1().compareTo(value)!=0) result.add(i);
+                if(queryValue.compareTo(value)!=0) result.add(i);
             }
 
         }

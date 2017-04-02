@@ -1,20 +1,26 @@
 package query;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Rodrigo on 3/19/2017.
  */
 public class Query {
     private QueryType queryType;
     private String field;
-    private String value;
     private Comparable value1;
     private Comparable value2;
+    SimpleDateFormat dateFormat;
 
     //Constructor for Comparable Equality.
     public Query(QueryType type, String field,Comparable value1){
+        assert (type != QueryType.RANGE);
         queryType = type;
         this.value1 = value1;
         this.field = field;
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     }
 
     //Constructor for Comparable Range.
@@ -23,14 +29,11 @@ public class Query {
         this.value1 = value1;
         this.value2 = value2;
         this.field = field;
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+
     }
 
-    //Constructor for String Equality.
-    public Query(QueryType type,String field, String value){
-        queryType = type;
-        this.value = value;
-        this.field = field;
-    }
 
     public QueryType getQueryType() {
         return queryType;
@@ -38,10 +41,6 @@ public class Query {
 
     public String getField() {
         return field;
-    }
-
-    public String getValue() {
-        return value;
     }
 
     public Comparable getValue1() {
@@ -55,20 +54,30 @@ public class Query {
 
     @Override
     public String toString( ){
-        String result = "Query: "+ field + " ";
+        String value1 = "";
+        String value2 = "";
+        if(this.value1 instanceof Date) {
+            value1 = dateFormat.format(this.value1);
+
+            if(this.value2 != null) value2 = dateFormat.format(this.value2);
+        }
+        else{
+            value1 = this.value1.toString();
+            if(this.value2 != null) value2 = this.value2.toString();
+        }
+
+        String result = field + " ";
         switch (queryType){
             case RANGE:
                 result += "entries in range: ["+ value1 + " , "+ value2+"]";
                 break;
             case EQUALITY:
                 result += "values equal to: ";
-                if(value!=null) result += value;
-                else result += value1;
+                result += value1;
                 break;
             case INEQUALITY:
                 result += "values  not equal to: ";
-                if(value!=null) result += value;
-                else result += value1;
+                result += value1;
                 break;
 
         }

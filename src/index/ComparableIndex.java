@@ -11,6 +11,10 @@ public class ComparableIndex implements Index {
 
     private TreeMap<Comparable, List<Integer>> tree;
 
+    public ComparableIndex(){
+        tree = new TreeMap<>();
+    }
+
     @Override
     public List<Integer> getObjects(Query query){
         List<Integer> result = new LinkedList<>();

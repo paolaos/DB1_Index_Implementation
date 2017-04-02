@@ -78,10 +78,11 @@ public abstract class QueryAdministrator<T>{
     }
 
     public  List<Integer> complexQueryExecutor(Query query1, Query query2, boolean isDisjunctive){
-        System.out.println("First query:\n");
+        System.out.println("First query:\n"+query1);
         List<Integer> result1 = simpleQueryExecutor(query1);
-
-        System.out.println("Second query:\n");
+        if(isDisjunctive) System.out.println("AND");
+        else {System.out.println("OR");}
+        System.out.println("Second query:\n"+query2+"\n");
         List<Integer> result2 = simpleQueryExecutor(query2);
 
         List<Integer> finalResult = new LinkedList<>();
