@@ -5,8 +5,8 @@
 *.log
 
 # IntelliJ Idea file
-.idea
+*.idea
 
 # iml files
-.xml
-.iml
+*.xml
+*.iml
