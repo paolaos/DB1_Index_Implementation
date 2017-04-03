@@ -1,19 +1,19 @@
 package ui;
 
-import java.util.Iterator;
+import java.io.IOException;
 
 /**
- * Created by Paola Ortega S on 3/16/2017.
+ * Please run the main method in order to initiate the program. Remember this program only
+ * supports .csv files, and only calls in for String, bool, date, int and double data types
+ * (case sensitive).
  */
 public class Main {
-    public static void main(String[] args){
-        String prueba = "Cosa 1,Cosa 2,Cosa 3";
-        String[] array = prueba.split(",");
-        System.out.println(array.length);
-        for(int i = 0; i < array.length; i++)
-            System.out.println(array[i]);
-
-        //ui.UI ui = new ui.UI();
+    public static void main(String[] args) {
+        try {
+            UI ui = new UI();
+        } catch (IOException e) {
+            e.fillInStackTrace();
+        }
 
     }
 
