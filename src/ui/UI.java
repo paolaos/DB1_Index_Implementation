@@ -143,26 +143,32 @@ public class UI {
             System.out.println("Please use the format \"number,number,...\" to specify which columns you'd like to have displayed. The options go as follows: ");
             for (int i = 0; i < queryAdministrator.getFields().length; i++)
                 System.out.println("\tType " + (i + 1) + " to display by " + queryAdministrator.getFields()[i]); //TODO ver si esta bien el i del # con el de getFields.
-
+            System.out.println("If you'd like all columns to be displayed, please type \"*\".");
             String columns = reader.next();
-            String[] stringArray = columns.split(",");
-            finalArray = new int[stringArray.length];
-            if (stringArray.length <= queryAdministrator.getFields().length) {
-                for (int i = 0; i < stringArray.length; i++) {
-                    if (stringArray[i].matches("[0-9]+")) {
-                        int temp = Integer.parseInt(stringArray[i]);
-                        if (temp - 1 <= queryAdministrator.getRows()) {
-                            finalArray[i] = (temp - 1);
-                        }
-                    } else
-                        throw new ArrayIndexOutOfBoundsException("Fatal error: one of the inputs doesn't match the format ");
-
-                }
+            if(columns.equals("*")){
+                finalArray = new int[queryAdministrator.getColumns()];
+                for(int i = 0; i < finalArray.length; i++)
+                    finalArray[i] = i;
                 solved = true;
+            } else {
+                String[] stringArray = columns.split(",");
+                finalArray = new int[stringArray.length];
+                if (stringArray.length <= queryAdministrator.getFields().length) {
+                    for (int i = 0; i < stringArray.length; i++) {
+                        if (stringArray[i].matches("[0-9]+")) {
+                            int temp = Integer.parseInt(stringArray[i]);
+                            if (temp - 1 <= queryAdministrator.getColumns()) {
+                                finalArray[i] = (temp - 1);
+                            }
+                        } else
+                            throw new ArrayIndexOutOfBoundsException("Fatal error: one of the inputs doesn't match the format ");
 
-            } else
-                System.out.println("Invalid input. Please try again. ");
+                    }
+                    solved = true;
 
+                } else
+                    System.out.println("Invalid input. Please try again. ");
+            }
         }
         return finalArray;
     }

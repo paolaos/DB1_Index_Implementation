@@ -150,8 +150,7 @@ public abstract class QueryAdministrator<T>{
         return result;
     }
 
-    public int getRows() {
-        return rows;
+    public int getColumns() {
+        return columns;
     }
-
 }
