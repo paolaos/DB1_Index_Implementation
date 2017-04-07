@@ -10,7 +10,11 @@ import query.*;
  * appear as values.
  */
 public class EqualityIndex implements Index {
-    Hashtable<String, List<Integer>> table = new Hashtable<>();
+    HashMap<String, List<Integer>> table;
+
+    public EqualityIndex(){
+        table = new HashMap<>();
+    }
 
 
     /**
@@ -29,7 +33,7 @@ public class EqualityIndex implements Index {
                 result = table.get(query.getValue1());
                 break;
             case INEQUALITY:
-                Hashtable<String, List<Integer>> copy = table;
+                HashMap<String, List<Integer>> copy = table;
                 copy.remove(query.getValue1());
                 for(List<Integer> temp: copy.values())
                     result.addAll(temp);
@@ -49,7 +53,7 @@ public class EqualityIndex implements Index {
     @Override
     public void addObject(Object o, Integer row) {
         String string = (String) o;
-        if(!table.contains(string))
+        if(!table.containsKey(string))
             table.put(string, new LinkedList<>(Collections.singleton(row)));
 
         else table.get(string).add(row);
