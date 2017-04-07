@@ -87,6 +87,9 @@ public class Query {
         return value2;
     }
 
+    /**
+     * @return string representation of this query.
+     */
     @Override
     public String toString() {
         String value1 = "";

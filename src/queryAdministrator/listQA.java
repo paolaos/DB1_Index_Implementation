@@ -9,12 +9,20 @@ import java.text.ParseException;
 import java.util.*;
 
 /**
- * Created by Rodrigo on 3/23/2017.
+ * This class extends the QueryAdministrator abstract class. It implements all its abstract methods to create and retrieve
+ * information from a data structure, it implements no extra methods. The data structure used by this class is a
+ * LinkedList of LinkedLists, each LinkedList corresponds to a row or data entry of the file the contructro method
+ * receives as a parameter.
  */
 public class listQA extends QueryAdministrator {
-    //Version ineficiente
+
     private List<LinkedList<Comparable>> data;
 
+    /**
+     * ListQA class constructor, this method instantiates the appropiate structures to store data and then calls methods that
+     * validate data types and build the data base.
+     * @param file
+     */
     public listQA(File file) {
         this.file = file;
         validFile = false;
@@ -30,10 +38,13 @@ public class listQA extends QueryAdministrator {
 
     }
 
-
-
-
-
+    /**
+     * This method reads the file and stores each entry in the class Data structure.
+     * For the listQA implementation each row entry is stored as a List of Objects.
+     * For the indexedQA each row field is stored in the field's index.
+     * @throws IOException
+     * @throws ParseException
+     */
     public void storeData() throws IOException, ParseException {
         assert(validFile);
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -76,6 +87,13 @@ public class listQA extends QueryAdministrator {
 
     }
 
+    /**
+     * This method processes a simple query, one with only one field, of Equality or Inequality
+     * QueryType. It looks in the class's data structure for the rows that,in the searched field, have
+     * the same value as the one of the query or different to it, in the Inequality case.
+     * @param query query with desired field and value to look for
+     * @return List of rows in which the value occurs.
+     */
     public List<Integer> simpleEqualityQueryExecutor(Query query){
         List<Integer> result = new LinkedList<>();
         int column=0;
@@ -100,6 +118,13 @@ public class listQA extends QueryAdministrator {
         return result;
     }
 
+    /**
+     * This method processes a simple query, one with only one field, of Range QueryType.
+     * It looks in the class's data structure for all the rows that, in the query's field, have a value
+     * in the range specified by the query's value1 and value2
+     * @param query with the field to look for and the range of values.
+     * @return List of rows in which the value is in the range.
+     */
     @Override
     public List<Integer> simpleRangeQueryExecutor(Query query) {
         List<Integer> result = new LinkedList<>();
@@ -119,7 +144,15 @@ public class listQA extends QueryAdministrator {
 
     }
 
-    public Object[] getRow(int rowNumber){return data.get(rowNumber).toArray();}
+    /**
+     * Returns the table entry of the appropriate row(received as a parameter) as an array of Objects, one for each field.
+     * Depending on the inheriting class it may be the actual object values of the appropriate dataType, or String
+     * values.
+     * @param rowNumber
+     * @return Array of values one for each field.
+     * @throws IOException
+     */
+    protected Object[] getRow(int rowNumber){return data.get(rowNumber).toArray();}
 
 
 
