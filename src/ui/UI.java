@@ -389,8 +389,6 @@ public class UI {
                     case "double":
                         quantity = this.validateIntOptions("Would you like your range to be defined by 1 or 2 numbers? Please type the quantity. ", 1, 2);
                         if (quantity == 1) {
-                            System.out.println("For the inequality, please select a number accordingly: \n\t1: Greater than x" +
-                                    "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x");
                             int inequality = this.validateIntOptions("For the inequality sign, please select a number accordingly: \n\t1: Greater than x" +
                                     "\n\t2: Greater than or equal to x \n\t3: Less than x \n\t4: Less than or equal to x", 1, 4);
                             System.out.println("Now that you typed the inequality, please type the fixed value (x) you want to search with");
@@ -428,7 +426,6 @@ public class UI {
                         break;
 
                     case "date":
-                        System.out.println("Would you like your range to be defined by 2 dates or by 1 date? Please type the quantity. ");
                         quantity = this.validateIntOptions("Would you like your range to be defined by 2 dates or by 1 date? Please type the quantity. ", 1, 2);
                         if (quantity == 1) {
                             int inequality = this.validateIntOptions("For the inequality, please select a number accordingly: \n\t1: Younger than x" +
